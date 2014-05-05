@@ -4,11 +4,15 @@ var express = require('express')
 var path = require('path')
   , staticPath = path.normalize(__dirname + '/../client');
 
-app.use(express.static(staticPath));
+app.use('/countdown', express.static(staticPath));
 app.use(require('prerender-node'));
 
-app.get('*', function (req, res) {
+app.get('/countdown/*', function (req, res) {
   res.sendfile(staticPath + '/index.html');
 });
 
-app.listen(4000);
+app.get('*', function (req, res) {
+  res.send('Nothing to see here.');
+});
+
+app.listen(5000);

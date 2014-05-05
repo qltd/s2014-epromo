@@ -8,6 +8,10 @@
     "email": "mike@qltd.com",
     "url": "https://twitter.com/mjbondra"
   },
+  "scripts": {
+    "start": "nodemon server",
+    "install": "gulp"
+  },
   "devDependencies": {
     "bower": "~1.3.3",
     "gulp": "~3.6.2",

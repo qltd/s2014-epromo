@@ -13,6 +13,12 @@
     LIBRARIES
 \*------------------------------------*/
 
+/*--Third Party Libraries--*/
+@import "normalize"; // symlinked css as scss from ../lib/normalize-css/normalize.css
+@import "html5-boilerplate"; // symlinked css as scss from ../lib/html5-boilerplate/css/main.css
+@import "compass"; // requires compass -- 'gem install compass' or 'bundle install'
+@import "../lib/font-awesome/scss/font-awesome";
+
 /*------------------------------------*\
     UNIVERSAL STYLES
 \*------------------------------------*/

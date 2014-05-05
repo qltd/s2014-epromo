@@ -33,7 +33,7 @@ gulp.task('compass', ['bower'], function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./client/config/*.js', './client/app/**/*.js'], ['browserify']);
+  gulp.watch(['./client/config/*.js', './client/app/*.js'], ['browserify']);
   gulp.watch(['./client/assets/scss/*.scss', './client/assets/scss/**/*.scss'], ['compass']);
 });
 

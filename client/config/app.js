@@ -8,6 +8,7 @@ require('../assets/lib/angular-touch/angular-touch');
 
 // App Dependencies
 require('../app/controllers');
+require('../app/filters');
 require('../app/services');
 
 // Router
@@ -19,6 +20,7 @@ var app = angular.module('ePromo', [
   'ngRoute',
   'ngTouch',
   'ePromo.controllers',
+  'ePromo.filters',
   'ePromo.services',
   'ePromo.routes'
 ]);

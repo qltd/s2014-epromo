@@ -13,7 +13,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     templateUrl: '/countdown/app/views/countdown/index.html',
     controller: 'countdown.index'
   });
-  $routeProvider.when('/:countdown', {
+  $routeProvider.when('/:item', {
     templateUrl: '/countdown/app/views/countdown/show.html',
     controller: 'countdown.show'
   });

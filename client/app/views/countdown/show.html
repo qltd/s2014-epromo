@@ -1,1 +1,9 @@
-<article>stub for content</article>
+<article>
+  <h3>{{ item.title }}</h3>
+  <i data-ng-class="'fa ' + item.fontAwesomeClass"></i>
+  <div data-ng-bind-html="item.description | renderHtml"></div>
+  <div data-ng-bind-html="item.content | renderHtml"></div>
+</article>
+<a data-ng-href="{{ '/countdown/' + item.countdownNumber - 1 }}">back</a>
+<a href="/countdown/">index</a>
+<a data-ng-href="{{ '/countdown/' + item.countdownNumber + 1 }}">forward</a>

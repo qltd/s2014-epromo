@@ -19,6 +19,11 @@
 @import "compass"; // requires compass -- 'gem install compass' or 'bundle install'
 @import "../lib/font-awesome/scss/font-awesome";
 
+/*--SIGGRAPH Libraries--*/
+@import "vars";
+@import "font-face";
+@import "mixins";
+
 /*------------------------------------*\
     UNIVERSAL STYLES
 \*------------------------------------*/
@@ -30,6 +35,12 @@
 /*------------------------------------*\
     ELEMENTAL STYLES
 \*------------------------------------*/
+
+body {
+  min-width: 320px;
+  background: #beb1a0 url("../img/bg.jpg");
+  @include Swiss(16px);
+}
 
 /*------------------------------------*\
     UTILITIES

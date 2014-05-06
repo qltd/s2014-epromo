@@ -1,0 +1,30 @@
+  ////////////
+ // MIXINS //
+////////////
+
+/*------------------------------------*\
+    MIKE'S MIXINS
+\*------------------------------------*/
+
+@import "mixins/base";
+
+/*------------------------------------*\
+    SIGGRAPH SPECIFIC MIXINS
+\*------------------------------------*/
+
+/*--Fonts--*/
+
+/**
+ * The following mixins are subsets of the font-details mixin,
+ * differentiated by the fact that they are populated with
+ * specific font-families, and do not accept a $family parameter
+ */
+@mixin FontAwesome($size: null, $color: null, $weight: null, $height: null, $style: null) {
+  $family: "FontAwesome";
+  @include font-details($size, $color, $weight, $height, $style, $family);
+}
+
+@mixin Swiss($size: null, $color: null, $weight: null, $height: null, $style: null) {
+  $family: "Swiss", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @include font-details($size, $color, $weight, $height, $style, $family);
+}

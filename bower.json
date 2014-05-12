@@ -8,6 +8,8 @@
     "angular-touch": "1.2.x",
     "font-awesome": "4.x",
     "html5-boilerplate": "4.x",
-    "normalize-css": "3.x"
+    "html5shiv": "3.7.2",
+    "normalize-css": "3.x",
+    "respond": "1.4.2"
   }
 }

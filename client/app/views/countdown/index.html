@@ -1,8 +1,8 @@
 <ul>
   <li data-ng-repeat="item in index">
     <a data-ng-href="{{ item.countdownNumber }}">
-      <i data-ng-class="'fa ' + item.fontAwesomeClass"></i>
-      <span>{{ item.countdownNumber }}</span>
+      <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
+      <span class="countdown-number">{{ item.countdownNumber }}</span>
       <h3>{{ item.title }}</h3>
     </a>
   </li>

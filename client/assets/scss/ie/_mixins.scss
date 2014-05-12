@@ -1,0 +1,40 @@
+  ///////////////
+ // IE MIXINS //
+///////////////
+
+  //----------------------------------//
+ //  GLOBAL MIXINS
+//----------------------------------//
+
+@import "../mixins";
+
+  //----------------------------------//
+ //  IE SPECIFIC MIXINS
+//----------------------------------//
+
+//--Fonts--//
+
+//-
+ // The following mixins are subsets of the font-details mixin,
+ // differentiated by the fact that they are populated with
+ // specific font-families, and do not accept a $family parameter
+ //-
+@mixin Swiss-Bold($size: null, $color: null, $weight: null, $height: null, $style: null) {
+  $family: "Swiss-Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @include font-details($size, $color, $weight, $height, $style, $family);
+}
+
+@mixin Swiss-Medium($size: null, $color: null, $weight: null, $height: null, $style: null) {
+  $family: "Swiss-Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @include font-details($size, $color, $weight, $height, $style, $family);
+}
+
+@mixin Swiss-Roman($size: null, $color: null, $weight: null, $height: null, $style: null) {
+  $family: "Swiss-Roman", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @include font-details($size, $color, $weight, $height, $style, $family);
+}
+
+@mixin Swiss-Light($size: null, $color: null, $weight: null, $height: null, $style: null) {
+  $family: "Swiss-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @include font-details($size, $color, $weight, $height, $style, $family);
+}

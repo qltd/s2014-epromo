@@ -2,9 +2,9 @@
 
 var app = angular.module('ePromo.controllers', []);
 
+
 /**
  * Countdown index
- * ROUTE /#!/
  * TEMPLATE /app/views/countdown/index.html
  */
 app.controller('countdown.index', ['$scope', 'API', function ($scope, API) {
@@ -14,9 +14,8 @@ app.controller('countdown.index', ['$scope', 'API', function ($scope, API) {
   API('countdown').success(function (index) {
     var i = index.length;
     while (i--) if (index[i].countdownNumber) $scope.index[parseInt(index[i].countdownNumber) - 1] = index[i];
-  }).error(function () {
-
-  });
+    $scope.index.reverse();
+  }).error(function () {});
 }]);
 
 /**
@@ -24,15 +23,9 @@ app.controller('countdown.index', ['$scope', 'API', function ($scope, API) {
  * ROUTE /#!/:number
  * TEMPLATE /app/views/countdown/show.html
  */
-app.controller('countdown.show', ['$scope', '$sce', '$routeParams', 'API', function ($scope, $sce, $routeParams, API) {
+app.controller('countdown.show', ['$scope', '$routeParams', 'Head', 'API', function ($scope, $routeParams, Head, API) {
   API('countdown/' + $routeParams.item).success(function (item) {
     $scope.item = item || {};
-  }).error(function () {
-
-  });
+    Head.setTitle(item.title);
+  }).error(function () {});
 }]);
-
-/**
- * <head> controller
- */
-app.controller('html.head', ['$scope', function ($scope) {}]);

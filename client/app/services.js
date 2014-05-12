@@ -33,6 +33,16 @@ app.factory('API', ['$http', function ($http) {
  */
 app.factory('CountdownIndex', [function () {}]);
 
+/**
+ *
+ */
+app.service('NoView', ['Head', function (Head) {
+  return function () {
+    Head.setTitle('Countdown to Technology, Innovation, and Inspiration');
+    Head.setDescription('Weekly countdown to SIGGRAPH 2014');
+  };
+}]);
+
 /*------------------------------------*\
     ELEMENTAL SERVICES
 \*------------------------------------*/
@@ -40,18 +50,21 @@ app.factory('CountdownIndex', [function () {}]);
 /**
  * <head> Service
  */
-app.factory('Head', function () {
-  var defaultTitle = 'SIGGRAPH 2014';
-  var title = defaultTitle;
-  var description = 'Countdown to Technology, Innovation, and Inspriation';
+app.factory('Head', ['$rootScope', function ($rootScope) {
+  var title = 'Countdown to Technology, Innovation, and Inspiration | SIGGRAPH 2014';
+  var description = 'Countdown to Technology, Innovation, and Inspiration';
+  $rootScope.getDescription = function () {
+    return description;
+  };
+  $rootScope.getTitle = function () {
+    return title;
+  };
   return {
-    description: function (newDescription) {
-      if (typeof newDescription !== 'undefined') description = newDescription;
-      else return description;
+    setDescription: function (d) {
+      description = d;
     },
-    title: function (newTitle) {
-      if (typeof newTitle !== 'undefined') title = ( newTitle === defaultTitle ? defaultTitle : newTitle + ' || ' + defaultTitle );
-      else return title;
+    setTitle: function (t) {
+      title = t + ' | SIGGRAPH 2014';
     }
   };
-});
+}]);

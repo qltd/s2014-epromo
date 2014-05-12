@@ -27,9 +27,10 @@ gulp.task('compass', ['bower'], function () {
     .pipe(plumber())
     .pipe(compass({ sass: './client/assets/scss', css: './client/assets/css' }))
     .pipe(gulp.dest('./client/assets/css/'))
-    .pipe(rename('main.min.css'))
+    .pipe(rename(function (path) { path.basename += '.min'; }))
     .pipe(csso())
     .pipe(gulp.dest('./client/assets/css/'));
+
 });
 
 gulp.task('watch', function () {

@@ -1,6 +1,6 @@
 <article>
   <h3>{{ item.title }}</h3>
-  <i data-ng-class="'fa ' + item.fontAwesomeClass"></i>
+  <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
   <div data-ng-bind-html="item.description | renderHtml"></div>
   <div data-ng-bind-html="item.content | renderHtml"></div>
 </article>

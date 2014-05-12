@@ -1,24 +1,24 @@
 
-/**
- * @mixin font-details
- *
- * Font mixin designed for easily adding individual attributes,
- * without including those that are unneccesary or unstated.
- *
- * Priority is given to size and color, though any attribute can
- * be targeted through the use of the 'null' value.
- *
- * Example: font-weight: 300 and line-height: 1
- * @include font-details(null, null, 300, 1);
- *
- * @param $size {value} - <absolute-size> | <relative-size> | <length> | <percentage> | inherit
- * @param $color {value} - <color> | inherit
- * @param $weight {value} - normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
- * @param $height {value} - normal | <number> | <length> | <percentage>
- * @param $style {value} - normal | italic | oblique
- * @param $family {value} - [<family-name> | <generic-family>] | inherit
- * @returns {declarations}
- */
+//-
+ // @mixin font-details
+ //
+ // Font mixin designed for easily adding individual attributes,
+ // without including those that are unneccesary or unstated.
+ //
+ // Priority is given to size and color, though any attribute can
+ // be targeted through the use of the 'null' value.
+ //
+ // Example: font-weight: 300 and line-height: 1
+ // @include font-details(null, null, 300, 1);
+ //
+ // @param $size {value} - <absolute-size> | <relative-size> | <length> | <percentage> | inherit
+ // @param $color {value} - <color> | inherit
+ // @param $weight {value} - normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
+ // @param $height {value} - normal | <number> | <length> | <percentage>
+ // @param $style {value} - normal | italic | oblique
+ // @param $family {value} - [<family-name> | <generic-family>] | inherit
+ // @returns {declarations}
+ //-
 @mixin font-details($size: null, $color: null, $weight: null, $height: null, $style: null, $family: null) {
   @if $family != null {
     @if $height != null {

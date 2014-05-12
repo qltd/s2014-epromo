@@ -10,8 +10,11 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
   $locationProvider.hashPrefix('!');
 
   $routeProvider.when('/', {
-    templateUrl: '/countdown/app/views/countdown/index.html',
-    controller: 'countdown.index'
+    resolve: {
+      response: ['NoView', function (NoView) {
+        NoView();
+      }]
+    }
   });
   $routeProvider.when('/:item', {
     templateUrl: '/countdown/app/views/countdown/show.html',

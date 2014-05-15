@@ -91,7 +91,7 @@ h2 {
 }
 
 h3 {
-  @include font-details(0.875em, white);
+  @include font-details(1em, white);
 }
 
 p {
@@ -126,7 +126,7 @@ a {
 \*------------------------------------*/
 
 /*--Header--*/
-header {
+body > header {
   padding: 32px 16px;
   background: $beige-background url("../img/bg.jpg");
   h1 {
@@ -173,33 +173,83 @@ header {
 }
 
 main {
-
-}
-
-aside {
-  nav {
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      li {
-        text-align: center;
-        a {
-          i {
-            &.fa {
+  margin: 36px 12px;
+  article {
+    header {
+      i {
+        margin: {
+          bottom: 30px;
+        }
+      }
+    }
+    p {
+      line-height: 1.75;
+    }
+    footer {
+      margin: {
+        top: 50px;
+      }
+      text-align: center;
+      a {
+        i {
+          &.fa {
+            display: inline;
+            margin: {
+              right: 16px;
+            }
+            @include font-details(1.875em, $grey-text);
+            &.fa-caret-right {
               margin: {
-                bottom: 10px;
+                right: 0;
               }
             }
           }
-          span {
-            &.countdown-number {
-              display: block;
-              margin: {
-                bottom: 10px;
-              }
-              @include font-details(1.5em, $grey-text);
+        }
+      }
+    }
+  }
+}
+
+/*--Navigation--*/
+aside {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      margin: 75px 0 95px;
+      text-align: center;
+      a, span.countdown-unreleased {
+        i {
+          &.fa {
+            margin: {
+              bottom: 10px;
             }
+          }
+        }
+        span {
+          &.countdown-number {
+            display: block;
+            margin: {
+              bottom: 10px;
+            }
+            @include font-details(1.5em, $grey-text, 300);
+          }
+          &.countdown-title {
+            @include font-details(0.875em, null, 300);
+          }
+          &.countdown-date {
+            display: inline-block;
+            margin: {
+              bottom: 10px;
+            }
+            border-radius: 50%;
+            padding: 6px 5px 0;
+            width: 50px;
+            height: 50px;
+            background-color: $grey-circle;
+            @include font-details(null, $black-background, 500);
+            text-transform: uppercase;
           }
         }
       }

@@ -19,7 +19,7 @@ app.get('/api/countdown', api.index);
 app.get('/api/countdown/:countdown', api.show);
 
 app.get('*', function (req, res) {
-  res.send('Nothing to see here.');
+  res.redirect('/countdown');
 });
 
 app.listen(5000);

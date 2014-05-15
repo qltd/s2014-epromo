@@ -1,9 +1,13 @@
 <ul>
   <li data-ng-repeat="item in index">
-    <a data-ng-href="{{ item.countdownNumber }}">
+    <a data-ng-if="item.title" data-ng-href="/countdown/{{ item.countdownNumber }}">
       <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
       <span class="countdown-number">{{ item.countdownNumber }}</span>
-      <h3>{{ item.title }}</h3>
+      <span class="countdown-title">{{ item.title }}</span>
     </a>
+    <span data-ng-if="!item.title" class="countdown-unreleased">
+      <span class="countdown-date">{{ item.releaseDate | formatDate }}</span>
+      <span class="countdown-number">{{ item.countdownNumber }}</span>
+    </span>
   </li>
 </ul>

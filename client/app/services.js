@@ -3,6 +3,12 @@
 var app = angular.module('ePromo.services', []);
 
 /*------------------------------------*\
+    SITE-WIDE VALUES
+\*------------------------------------*/
+
+app.value('AvailableCountdownRange', { min: false, max: false });
+
+/*------------------------------------*\
     EXTERNAL LIBRARY SERVICES
 \*------------------------------------*/
 
@@ -29,17 +35,68 @@ app.factory('API', ['$http', function ($http) {
 }]);
 
 /**
- * Countdown index service
+ * Countdown Creation Service
  */
-app.factory('CountdownIndex', [function () {}]);
+app.factory('CountdownCreate', ['$q', 'API', 'AvailableCountdownRange', function ($q, API, AvailableCountdownRange) {
+  var addDays = function (date, days) {
+    var newDate = new Date(date);
+    newDate.setDate(date.getDate() + days);
+    return newDate;
+  };
+  return function (countdownLength, startDate) {
+    var deferred = $q.defer();
+    var _index = [];
+    var i = countdownLength;
+    var releaseDate = new Date(startDate);
+    while (i--) {
+      _index.push({ releaseDate: releaseDate, countdownNumber: i + 1 });
+      releaseDate = addDays(releaseDate, 7);
+    }
+    API('countdown').success(function (index) {
+      var i = index.length;
+      while (i--) if (index[i].countdownNumber) {
+        var countdownNumber = parseInt(index[i].countdownNumber);
+        _index[countdownLength - countdownNumber] = index[i];
+        if (countdownNumber > AvailableCountdownRange.max || AvailableCountdownRange.max === false) AvailableCountdownRange.max = countdownNumber;
+        if (countdownNumber < AvailableCountdownRange.min || AvailableCountdownRange.min === false) AvailableCountdownRange.min = countdownNumber;
+      }
+      deferred.resolve(_index);
+    }).error(function (err) {
+      deferred.reject(_index);
+    });
+    return deferred.promise;
+  };
+}]);
 
 /**
- *
+ * Date Handling Service
  */
-app.service('NoView', ['Head', function (Head) {
+app.factory('DateHandler', [function () {
+  return {
+    month: [
+      { name: 'January', abbreviation: 'Jan' },
+      { name: 'February', abbreviation: 'Feb' },
+      { name: 'March', abbreviation: 'Mar' },
+      { name: 'April', abbreviation: 'Apr' },
+      { name: 'May', abbreviation: 'May' },
+      { name: 'June', abbreviation: 'Jun' },
+      { name: 'July', abbreviation: 'Jul' },
+      { name: 'August', abbreviation: 'Aug' },
+      { name: 'September', abbreviation: 'Sep' },
+      { name: 'October', abbreviation: 'Oct' },
+      { name: 'November', abbreviation: 'Nov' },
+      { name: 'December', abbreviation: 'Dec' }
+    ]
+  };
+}]);
+
+/**
+ * Factory for routes that do not point to a controller or template
+ */
+app.factory('NoView', ['Head', function (Head) {
   return function () {
     Head.setTitle('Countdown to Technology, Innovation, and Inspiration');
-    Head.setDescription('Weekly countdown to SIGGRAPH 2014');
+    Head.setDescription('Countdown to Technology, Innovation, and Inspiration');
   };
 }]);
 
@@ -51,8 +108,7 @@ app.service('NoView', ['Head', function (Head) {
  * <head> Service
  */
 app.factory('Head', ['$rootScope', function ($rootScope) {
-  var title = 'Countdown to Technology, Innovation, and Inspiration | SIGGRAPH 2014';
-  var description = 'Countdown to Technology, Innovation, and Inspiration';
+  var title, description;
   $rootScope.getDescription = function () {
     return description;
   };
@@ -68,3 +124,8 @@ app.factory('Head', ['$rootScope', function ($rootScope) {
     }
   };
 }]);
+
+/**
+ * <body> Service
+ */
+app.factory('Body', ['$rootScope', function ($rootScope) {}]);

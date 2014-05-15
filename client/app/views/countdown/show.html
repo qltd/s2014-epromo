@@ -1,9 +1,13 @@
 <article>
-  <h3>{{ item.title }}</h3>
-  <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
+  <header>
+    <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
+    <h3>{{ item.countdownNumber }}. {{ item.title }}</h3>
+  </header>
   <div data-ng-bind-html="item.description | renderHtml"></div>
   <div data-ng-bind-html="item.content | renderHtml"></div>
+  <footer>
+    <a data-ng-href="{{ '/countdown/' + item.countdownNumber }}" title="Previous"><i class="fa fa-caret-left"></i></a>
+    <a href="/countdown/" title="Index"><i class="fa fa-bars"></i></a>
+    <a data-ng-href="{{ '/countdown/' + item.countdownNumber }}" title="Next"><i class="fa fa-caret-right"></i></a>
+  </footer>
 </article>
-<a data-ng-href="{{ '/countdown/' + item.countdownNumber - 1 }}">back</a>
-<a href="/countdown/">index</a>
-<a data-ng-href="{{ '/countdown/' + item.countdownNumber + 1 }}">forward</a>

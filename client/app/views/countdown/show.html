@@ -6,8 +6,10 @@
   <div data-ng-bind-html="item.description | renderHtml"></div>
   <div data-ng-bind-html="item.content | renderHtml"></div>
   <footer>
-    <a data-ng-href="{{ '/countdown/' + item.countdownNumber }}" title="Previous"><i class="fa fa-caret-left"></i></a>
+    <a data-ng-if="Countdown.previous(item.countdownNumber)" data-ng-href="{{ '/countdown/' + Countdown.previous(item.countdownNumber) }}" title="Previous"><i class="fa fa-caret-left"></i></a>
+    <span data-ng-if="Countdown.previous(item.countdownNumber) === false" class="no-previous"><i class="fa fa-caret-left"></i></span>
     <a href="/countdown/" title="Index"><i class="fa fa-bars"></i></a>
-    <a data-ng-href="{{ '/countdown/' + item.countdownNumber }}" title="Next"><i class="fa fa-caret-right"></i></a>
+    <a data-ng-if="Countdown.next(item.countdownNumber)" data-ng-href="{{ '/countdown/' + Countdown.next(item.countdownNumber) }}" title="Next"><i class="fa fa-caret-right"></i></a>
+    <span data-ng-if="Countdown.next(item.countdownNumber) === false" class="no-next"><i class="fa fa-caret-right"></i></span>
   </footer>
 </article>

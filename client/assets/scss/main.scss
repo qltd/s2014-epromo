@@ -190,20 +190,26 @@ main {
         top: 50px;
       }
       text-align: center;
-      a {
-        i {
-          &.fa {
-            display: inline;
-            margin: {
-              right: 16px;
-            }
-            @include font-details(1.875em, $grey-text);
-            &.fa-caret-right {
-              margin: {
-                right: 0;
-              }
-            }
+      .fa {
+        display: inline;
+        margin: {
+          right: 16px;
+        }
+        font-size: 1.875em;
+        &.fa-caret-right {
+          margin: {
+            right: 0;
           }
+        }
+      }
+      a {
+        .fa {
+          color: $grey-text;
+        }
+      }
+      .no-previous, .no-next {
+        .fa {
+          color: $black-text;
         }
       }
     }
@@ -219,39 +225,33 @@ aside {
     li {
       margin: 75px 0 95px;
       text-align: center;
-      a, span.countdown-unreleased {
-        i {
-          &.fa {
-            margin: {
-              bottom: 10px;
-            }
-          }
+      .fa {
+        margin: {
+          bottom: 10px;
         }
-        span {
-          &.countdown-number {
-            display: block;
-            margin: {
-              bottom: 10px;
-            }
-            @include font-details(1.5em, $grey-text, 300);
-          }
-          &.countdown-title {
-            @include font-details(0.875em, null, 300);
-          }
-          &.countdown-date {
-            display: inline-block;
-            margin: {
-              bottom: 10px;
-            }
-            border-radius: 50%;
-            padding: 6px 5px 0;
-            width: 50px;
-            height: 50px;
-            background-color: $grey-circle;
-            @include font-details(null, $black-background, 500);
-            text-transform: uppercase;
-          }
+      }
+      .countdown-number {
+        display: block;
+        margin: {
+          bottom: 10px;
         }
+        @include font-details(1.5em, $grey-text, 300);
+      }
+      .countdown-title {
+        @include font-details(0.875em, null, 300);
+      }
+      .countdown-date {
+        display: inline-block;
+        margin: {
+          bottom: 10px;
+        }
+        border-radius: 50%;
+        padding: 6px 5px 0;
+        width: 50px;
+        height: 50px;
+        background-color: $grey-circle;
+        @include font-details(null, $black-background, 500);
+        text-transform: uppercase;
       }
     }
   }

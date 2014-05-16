@@ -6,8 +6,6 @@ var app = angular.module('ePromo.services', []);
     SITE-WIDE VALUES
 \*------------------------------------*/
 
-app.value('AvailableCountdownRange', { min: false, max: false });
-
 /*------------------------------------*\
     EXTERNAL LIBRARY SERVICES
 \*------------------------------------*/
@@ -35,36 +33,50 @@ app.factory('API', ['$http', function ($http) {
 }]);
 
 /**
- * Countdown Creation Service
+ * Countdown Service
  */
-app.factory('CountdownCreate', ['$q', 'API', 'AvailableCountdownRange', function ($q, API, AvailableCountdownRange) {
+app.factory('Countdown', ['$q', 'API', function ($q, API) {
   var addDays = function (date, days) {
     var newDate = new Date(date);
     newDate.setDate(date.getDate() + days);
     return newDate;
   };
-  return function (countdownLength, startDate) {
-    var deferred = $q.defer();
-    var _index = [];
-    var i = countdownLength;
-    var releaseDate = new Date(startDate);
-    while (i--) {
-      _index.push({ releaseDate: releaseDate, countdownNumber: i + 1 });
-      releaseDate = addDays(releaseDate, 7);
-    }
-    API('countdown').success(function (index) {
-      var i = index.length;
-      while (i--) if (index[i].countdownNumber) {
-        var countdownNumber = parseInt(index[i].countdownNumber);
-        _index[countdownLength - countdownNumber] = index[i];
-        if (countdownNumber > AvailableCountdownRange.max || AvailableCountdownRange.max === false) AvailableCountdownRange.max = countdownNumber;
-        if (countdownNumber < AvailableCountdownRange.min || AvailableCountdownRange.min === false) AvailableCountdownRange.min = countdownNumber;
+  var max = -1;
+  var min = -1;
+  return {
+    generate: function (countdownLength, startDate) {
+      var deferred = $q.defer();
+      var _index = [];
+      var i = countdownLength;
+      var releaseDate = new Date(startDate);
+      while (i--) {
+        _index.push({ releaseDate: releaseDate, countdownNumber: i + 1 });
+        releaseDate = addDays(releaseDate, 7);
       }
-      deferred.resolve(_index);
-    }).error(function (err) {
-      deferred.reject(_index);
-    });
-    return deferred.promise;
+      API('countdown').success(function (index) {
+        var i = index.length;
+        while (i--) if (index[i].countdownNumber) {
+          var countdownNumber = parseInt(index[i].countdownNumber);
+          _index[countdownLength - countdownNumber] = index[i];
+          if (countdownNumber > max) max = countdownNumber;
+          if (countdownNumber < min || min === -1) min = countdownNumber;
+        }
+        deferred.resolve(_index);
+      }).error(function (err) {
+        deferred.reject(_index);
+      });
+      return deferred.promise;
+    },
+    next: function (countdownNumber) {
+      countdownNumber = parseInt(countdownNumber);
+      if (max >= countdownNumber + 1) return countdownNumber + 1;
+      return false;
+    },
+    previous: function (countdownNumber) {
+      countdownNumber = parseInt(countdownNumber);
+      if (min <= countdownNumber - 1) return countdownNumber - 1;
+      return false;
+    }
   };
 }]);
 

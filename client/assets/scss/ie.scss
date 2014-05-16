@@ -56,17 +56,13 @@ body > header {
 aside {
   ul {
     li {
-      a, span.countdown-unreleased {
-        span {
-          &.countdown-title, &.countdown-number {
-            @include Swiss-Light();
-          }
-          &.countdown-date {
-            @include Swiss-Medium();
-            background-color: transparent;
-            background-image: url("../img/countdown-circle.png");
-          }
-        }
+      .countdown-title, .countdown-number {
+        @include Swiss-Light();
+      }
+      .countdown-date {
+        @include Swiss-Medium();
+        background-color: transparent;
+        background-image: url("../img/countdown-circle.png");
       }
     }
   }

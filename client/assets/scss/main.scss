@@ -78,11 +78,12 @@ body {
   @include Swiss(16px);
 }
 
-h1, h2, h3 {
-  margin: 0;
+h1 {
+  margin: 0 0 32px;
 }
 
 h2, h3 {
+  margin: 0;
   font-weight: 300;
 }
 
@@ -109,7 +110,7 @@ a {
 
 .fa {
   display: block;
-  font-size: 50px;
+  font-size: 3.125em;
   &.beige {
     color: $beige-text;
   }
@@ -121,27 +122,32 @@ a {
   }
 }
 
+.navigation {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  .navigation-item {
+    display: inline-block;
+  }
+}
+
 /*------------------------------------*\
     CONTENT
 \*------------------------------------*/
 
-/*--Header--*/
-body > header {
+/*--Primary Header--*/
+.primary-header {
   padding: 32px 16px;
   background: $beige-background url("../img/bg.jpg");
-  h1 {
-    margin: {
-      bottom: 32px;
-    }
-    a {
-      @extend .ir;
-      display: block;
-      width: 247px;
-      height: 64px;
-      background-image: url("../img/logo-mobile.png");
-    }
+  .title-link {
+    @extend .ir;
+    display: block;
+    width: 247px;
+    height: 64px;
+    background-image: url("../img/logo-mobile.png");
   }
-  p {
+  .information {
     display: none;
   }
   // p {
@@ -172,88 +178,98 @@ body > header {
   // }
 }
 
-main {
+
+/*--Primary Content--*/
+.primary-content {
   margin: 36px 12px;
-  article {
-    header {
-      i {
-        margin: {
-          bottom: 30px;
-        }
-      }
+  .content-text {
+    line-height: 1.75;
+  }
+  .content-description {
+    margin: {
+      bottom: 30px;
     }
-    p {
-      line-height: 1.75;
+  }
+  img {
+    max-width: 100%;
+    height: auto !important;
+  }
+}
+.content-header {
+  .fa {
+    margin: {
+      bottom: 30px;
     }
-    footer {
+  }
+}
+.content-footer {
+  margin: {
+    top: 50px;
+  }
+}
+.content-navigation {
+  .navigation-link {
+    color: $grey-text;
+  }
+  .navigation-null {
+    color: $black-text;
+  }
+  .fa {
+    display: inline;
+    margin: {
+      right: 16px;
+    }
+    font-size: 1.875em;
+    &.fa-caret-right {
       margin: {
-        top: 50px;
-      }
-      text-align: center;
-      .fa {
-        display: inline;
-        margin: {
-          right: 16px;
-        }
-        font-size: 1.875em;
-        &.fa-caret-right {
-          margin: {
-            right: 0;
-          }
-        }
-      }
-      a {
-        .fa {
-          color: $grey-text;
-        }
-      }
-      .no-previous, .no-next {
-        .fa {
-          color: $black-text;
-        }
+        right: 0;
       }
     }
   }
 }
 
-/*--Navigation--*/
-aside {
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    li {
-      margin: 75px 0 95px;
-      text-align: center;
-      .fa {
-        margin: {
-          bottom: 10px;
-        }
-      }
-      .countdown-number {
-        display: block;
-        margin: {
-          bottom: 10px;
-        }
-        @include font-details(1.5em, $grey-text, 300);
-      }
-      .countdown-title {
-        @include font-details(0.875em, null, 300);
-      }
-      .countdown-date {
-        display: inline-block;
-        margin: {
-          bottom: 10px;
-        }
-        border-radius: 50%;
-        padding: 6px 5px 0;
-        width: 50px;
-        height: 50px;
-        background-color: $grey-circle;
-        @include font-details(null, $black-background, 500);
-        text-transform: uppercase;
-      }
+/*--Primary Navigation--*/
+.primary-navigation {
+  margin: {
+    right: auto;
+    left: auto;
+  };
+  width: 225px;
+  .navigation-item {
+    margin: 75px auto 0;
+    width: 225px;
+    height: 155px;
+  }
+  .navigation-link {
+    display: inline-block;
+  }
+  .fa {
+    margin: {
+      bottom: 10px;
     }
+  }
+  .countdown-number {
+    display: block;
+    margin: {
+      bottom: 10px;
+    }
+    @include font-details(1.5em, $grey-text, 300);
+  }
+  .countdown-title {
+    @include font-details(0.875em, null, 300);
+  }
+  .countdown-date {
+    display: inline-block;
+    margin: {
+      bottom: 10px;
+    }
+    border-radius: 50%;
+    padding: 6px 5px 0;
+    width: 50px;
+    height: 50px;
+    background-color: $grey-circle;
+    @include font-details(null, $black-background, 500);
+    text-transform: uppercase;
   }
 }
 
@@ -271,6 +287,11 @@ aside {
 // Desktop
 @media only screen and (min-width: 960px) {
   @import 'desktop';
+}
+
+// Desktop
+@media only screen and (min-width: 1200px) {
+  @import 'wide-desktop';
 }
 
 /*--Pixel Density--*/

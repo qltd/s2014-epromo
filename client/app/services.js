@@ -1,10 +1,25 @@
 'use strict';
 
-var app = angular.module('ePromo.services', []);
+var app = angular.module('ePromo.services', ['duScroll']);
 
 /*------------------------------------*\
     SITE-WIDE VALUES
 \*------------------------------------*/
+
+app.constant('Months', [
+  { name: 'January', abbreviation: 'Jan' },
+  { name: 'February', abbreviation: 'Feb' },
+  { name: 'March', abbreviation: 'Mar' },
+  { name: 'April', abbreviation: 'Apr' },
+  { name: 'May', abbreviation: 'May' },
+  { name: 'June', abbreviation: 'Jun' },
+  { name: 'July', abbreviation: 'Jul' },
+  { name: 'August', abbreviation: 'Aug' },
+  { name: 'September', abbreviation: 'Sep' },
+  { name: 'October', abbreviation: 'Oct' },
+  { name: 'November', abbreviation: 'Nov' },
+  { name: 'December', abbreviation: 'Dec' }
+]);
 
 /*------------------------------------*\
     EXTERNAL LIBRARY SERVICES
@@ -69,46 +84,47 @@ app.factory('Countdown', ['$q', 'API', function ($q, API) {
     },
     next: function (countdownNumber) {
       countdownNumber = parseInt(countdownNumber);
-      if (max >= countdownNumber + 1) return countdownNumber + 1;
+      if (min <= countdownNumber - 1) return countdownNumber - 1;
       return false;
     },
     previous: function (countdownNumber) {
       countdownNumber = parseInt(countdownNumber);
-      if (min <= countdownNumber - 1) return countdownNumber - 1;
+      if (max >= countdownNumber + 1) return countdownNumber + 1;
       return false;
     }
   };
 }]);
 
 /**
- * Date Handling Service
+ * Fixed Element Service
  */
-app.factory('DateHandler', [function () {
-  return {
-    month: [
-      { name: 'January', abbreviation: 'Jan' },
-      { name: 'February', abbreviation: 'Feb' },
-      { name: 'March', abbreviation: 'Mar' },
-      { name: 'April', abbreviation: 'Apr' },
-      { name: 'May', abbreviation: 'May' },
-      { name: 'June', abbreviation: 'Jun' },
-      { name: 'July', abbreviation: 'Jul' },
-      { name: 'August', abbreviation: 'Aug' },
-      { name: 'September', abbreviation: 'Sep' },
-      { name: 'October', abbreviation: 'Oct' },
-      { name: 'November', abbreviation: 'Nov' },
-      { name: 'December', abbreviation: 'Dec' }
-    ]
+app.factory('FixedElement', [function () {
+  return function () {
+
   };
 }]);
 
 /**
  * Factory for routes that do not point to a controller or template
  */
-app.factory('NoView', ['Head', function (Head) {
+app.factory('NoView', ['Head', 'ScrollY', function (Head, ScrollY) {
   return function () {
+    ScrollY();
     Head.setTitle('Countdown to Technology, Innovation, and Inspiration');
     Head.setDescription('Countdown to Technology, Innovation, and Inspiration');
+  };
+}]);
+
+/**
+ * Scrolling Service
+ */
+app.factory('ScrollY', ['$document', function ($document) {
+  return function (offset) {
+    if (!offset && offset !== 0) {
+      var header = document.getElementsByTagName('header');
+      if (header.length > 0) offset = header[0].offsetHeight;
+    }
+    $document.scrollTop(offset, 250);
   };
 }]);
 

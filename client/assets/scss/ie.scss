@@ -44,26 +44,25 @@ strong {
 \*------------------------------------*/
 
 /*--Header--*/
-body > header {
-  p {
-    strong {
-      @include Swiss-Medium();
-    }
+.primary-header {
+  strong {
+    @include Swiss-Medium();
   }
 }
 
+/*--Primary Content--*/
+.primary-content {
+  display: block;
+}
+
 /*--Navigation--*/
-aside {
-  ul {
-    li {
-      .countdown-title, .countdown-number {
-        @include Swiss-Light();
-      }
-      .countdown-date {
-        @include Swiss-Medium();
-        background-color: transparent;
-        background-image: url("../img/countdown-circle.png");
-      }
-    }
+.primary-navigation {
+  .countdown-title, .countdown-number {
+    @include Swiss-Light();
+  }
+  .countdown-date {
+    @include Swiss-Medium();
+    background-color: transparent;
+    background-image: url("../img/countdown-circle.png");
   }
 }

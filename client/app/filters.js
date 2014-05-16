@@ -5,11 +5,11 @@ var app = angular.module('ePromo.filters', []);
 /**
  * Format date
  */
-app.filter('formatDate', ['DateHandler', function (DateHandler) {
+app.filter('formatDate', ['Months', function (Months) {
   return function (input) {
     input = input || '';
     input = new Date(input);
-    return input.getDate() + ' ' + DateHandler.month[input.getMonth()].abbreviation;
+    return input.getDate() + ' ' + Months[input.getMonth()].abbreviation;
   };
 }]);
 

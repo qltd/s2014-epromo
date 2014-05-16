@@ -1,3 +1,6 @@
+  /////////////////////////
+ // WIDE DESKTOP STYLES //
+/////////////////////////
 
 /*------------------------------------*\
     UNIVERSAL STYLES
@@ -15,10 +18,7 @@
     CONTENT
 \*------------------------------------*/
 
-/*--Header--*/
-.primary-header {
-  .title-link {
-    background-image: url("../img/logo-mobile@2x.png");
-    background-size: 247px 64px;
-  }
+/*--Primary Navigation--*/
+.primary-navigation {
+  width: 1125px;
 }

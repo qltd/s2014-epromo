@@ -6,7 +6,10 @@ require('../assets/lib/angular-animate/angular-animate');
 require('../assets/lib/angular-route/angular-route');
 require('../assets/lib/angular-touch/angular-touch');
 
-// App Dependencies
+// Third-party modules
+require('../assets/lib/angular-scroll/angular-scroll');
+
+// App dependencies
 require('../app/controllers');
 require('../app/filters');
 require('../app/services');

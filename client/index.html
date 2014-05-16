@@ -17,15 +17,15 @@
     <title data-ng-bind="getTitle()">Countdown to Technology, Innovation, and Inspiration | SIGGRAPH 2014</title>
   </head>
   <body>
-    <header>
-      <h1><a href="/countdown/">SIGGRAPH 2014</a></h1>
-      <p class="information">The <strong>41st</strong> International <strong>Conference</strong> and <strong>Exhibition</strong> on <strong>Computer Graphics</strong> and <strong>Interactive Techniques</strong></p>
-      <p class="dates"><strong>Conference</strong> 10-14 August 2014<br><strong>Exhibition</strong> 12-14 August 2014<br><span class="vancouver-convention-center">Vancouver Convention Center</span></p>
-      <p class="sponsor">Sponsored by ACM<strong>SIGGRAPH</strong></p>
+    <header class="primary-header">
+      <h1><a class="title-link" href="/countdown/">SIGGRAPH 2014</a></h1>
+      <p class="information information-about">The <strong>41st</strong> International <strong>Conference</strong> and <strong>Exhibition</strong> on <strong>Computer Graphics</strong> and <strong>Interactive Techniques</strong></p>
+      <p class="information information-dates"><strong>Conference</strong> 10-14 August 2014<br><strong>Exhibition</strong> 12-14 August 2014<br><span class="vancouver-convention-center">Vancouver Convention Center</span></p>
+      <p class="information information-sponsor">Sponsored by ACM<strong>SIGGRAPH</strong></p>
       <!-- <img alt="" src="assets/img/info-dates.png"> -->
       <h2>Countdown to Technology, Innovation, and Inspiration</h2>
     </header>
-    <main data-ng-view></main>
+    <main class="primary-content" data-ng-view></main>
     <aside>
       <nav data-ng-controller="countdown.index" data-ng-include="'app/views/countdown/index.html'"></nav>
     </aside>

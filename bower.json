@@ -5,6 +5,7 @@
     "angular": "1.2.x",
     "angular-animate": "1.2.x",
     "angular-route": "1.2.x",
+    "angular-scroll": "0.x",
     "angular-touch": "1.2.x",
     "font-awesome": "4.x",
     "html5-boilerplate": "4.x",

@@ -1,15 +1,23 @@
-<article>
-  <header>
-    <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
-    <h3>{{ item.countdownNumber }}. {{ item.title }}</h3>
-  </header>
-  <div data-ng-bind-html="item.description | renderHtml"></div>
-  <div data-ng-bind-html="item.content | renderHtml"></div>
-  <footer>
-    <a data-ng-if="Countdown.previous(item.countdownNumber)" data-ng-href="{{ '/countdown/' + Countdown.previous(item.countdownNumber) }}" title="Previous"><i class="fa fa-caret-left"></i></a>
-    <span data-ng-if="Countdown.previous(item.countdownNumber) === false" class="no-previous"><i class="fa fa-caret-left"></i></span>
-    <a href="/countdown/" title="Index"><i class="fa fa-bars"></i></a>
-    <a data-ng-if="Countdown.next(item.countdownNumber)" data-ng-href="{{ '/countdown/' + Countdown.next(item.countdownNumber) }}" title="Next"><i class="fa fa-caret-right"></i></a>
-    <span data-ng-if="Countdown.next(item.countdownNumber) === false" class="no-next"><i class="fa fa-caret-right"></i></span>
-  </footer>
-</article>
+<header class="content-header">
+  <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
+  <h3 data-ng-if="item.title">{{ item.countdownNumber }}. {{ item.title }}</h3>
+</header>
+<div class="content-text content-description" data-ng-bind-html="item.description | renderHtml"></div>
+<div class="content-text content-main" data-ng-bind-html="item.content | renderHtml"></div>
+<footer class="content-footer">
+  <nav>
+    <ul class="navigation content-navigation">
+      <li class="navigation-item">
+        <a class="navigation-link" title="Previous" data-ng-href="{{ '/countdown/' + Countdown.previous(item.countdownNumber) }}" data-ng-if="Countdown.previous(item.countdownNumber)"><i class="fa fa-caret-left"></i></a>
+        <span class="navigation-null" data-ng-if="Countdown.previous(item.countdownNumber) === false"><i class="fa fa-caret-left"></i></span>
+      </li>
+      <li class="navigation-item">
+        <a class="navigation-link" href="/countdown/" title="Index"><i class="fa fa-bars"></i></a>
+      </li>
+      <li class="navigation-item">
+        <a class="navigation-link" title="Next" data-ng-href="{{ '/countdown/' + Countdown.next(item.countdownNumber) }}" data-ng-if="Countdown.next(item.countdownNumber)"><i class="fa fa-caret-right"></i></a>
+        <span class="navigation-null" data-ng-if="Countdown.next(item.countdownNumber) === false"><i class="fa fa-caret-right"></i></span>
+      </li>
+    </ul>
+  </nav>
+</footer>

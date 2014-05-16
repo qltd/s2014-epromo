@@ -1,6 +1,6 @@
-<ul>
-  <li data-ng-repeat="item in index">
-    <a data-ng-if="item.title" data-ng-href="/countdown/{{ item.countdownNumber }}">
+<ul class="navigation primary-navigation">
+  <li class="navigation-item" data-ng-repeat="item in index">
+    <a class="navigation-link" data-ng-if="item.title" data-ng-href="/countdown/{{ item.countdownNumber }}">
       <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
       <span class="countdown-number">{{ item.countdownNumber }}</span>
       <span class="countdown-title">{{ item.title }}</span>

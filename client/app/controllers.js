@@ -21,11 +21,15 @@ app.controller('countdown.index', ['$scope', 'Countdown', function ($scope, Coun
  * ROUTE /#!/:number
  * TEMPLATE /app/views/countdown/show.html
  */
-app.controller('countdown.show', ['$scope', '$routeParams', 'Head', 'API', 'Countdown', function ($scope, $routeParams, Head, API, Countdown) {
+app.controller('countdown.show', ['$scope', '$routeParams', '$location', '_', 'Head', 'API', 'Countdown', 'ScrollY', function ($scope, $routeParams, $location, _, Head, API, Countdown, ScrollY) {
   API('countdown/' + $routeParams.item).success(function (item) {
+    if (_.isEmpty(item)) return $location.path('/');
+    ScrollY();
     $scope.item = item || {};
     $scope.Countdown = Countdown;
     Head.setTitle(item.title);
     Head.setDescription(item.description);
-  }).error(function () {});
+  }).error(function (err) {
+    $location.path('/');
+  });
 }]);

@@ -122,12 +122,12 @@ a {
   }
 }
 
-.navigation {
+.navigation-list {
   margin: 0;
   padding: 0;
   list-style: none;
   text-align: center;
-  .navigation-item {
+  .navigation-list-item {
     display: inline-block;
   }
 }
@@ -235,10 +235,11 @@ a {
     left: auto;
   };
   width: 225px;
-  .navigation-item {
+  .navigation-list-item {
     margin: 75px auto 0;
     width: 225px;
     height: 155px;
+    vertical-align: top;
   }
   .navigation-link {
     display: inline-block;
@@ -279,6 +280,11 @@ a {
 
 /*--Screen Width--*/
 
+// Wide Mobile
+@media only screen and (min-width: 480px) {
+  @import 'mobile-wide';
+}
+
 // Tablet
 @media only screen and (min-width: 768px) {
   @import 'tablet';
@@ -289,9 +295,9 @@ a {
   @import 'desktop';
 }
 
-// Desktop
+// Wide Desktop
 @media only screen and (min-width: 1200px) {
-  @import 'wide-desktop';
+  @import 'desktop-wide';
 }
 
 /*--Pixel Density--*/
@@ -302,6 +308,14 @@ a {
   only screen and (-o-min-device-pixel-ratio: 13/10),
   only screen and (min-resolution: 1.3dppx) {
   @import 'high-pixel-density/main';
+}
+
+// Wide Mobile
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3) and (min-width: 480px) ,
+  only screen and (min--moz-device-pixel-ratio: 1.3) and (min-width: 480px) ,
+  only screen and (-o-min-device-pixel-ratio: 13/10) and (min-width: 480px) ,
+  only screen and (min-resolution: 1.3dppx) and (min-width: 480px)  {
+  @import 'high-pixel-density/mobile-wide';
 }
 
 // Tablet
@@ -318,4 +332,12 @@ a {
   only screen and (-o-min-device-pixel-ratio: 13/10) and (min-width: 960px) ,
   only screen and (min-resolution: 1.3dppx) and (min-width: 960px)  {
   @import 'high-pixel-density/desktop';
+}
+
+// Wide Desktop
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3) and (min-width: 1200px) ,
+  only screen and (min--moz-device-pixel-ratio: 1.3) and (min-width: 1200px) ,
+  only screen and (-o-min-device-pixel-ratio: 13/10) and (min-width: 1200px) ,
+  only screen and (min-resolution: 1.3dppx) and (min-width: 1200px)  {
+  @import 'high-pixel-density/desktop-wide';
 }

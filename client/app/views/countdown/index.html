@@ -1,11 +1,11 @@
-<ul class="navigation primary-navigation">
-  <li class="navigation-item" data-ng-repeat="item in index">
-    <a class="navigation-link" data-ng-if="item.title" data-ng-href="/countdown/{{ item.countdownNumber }}">
+<ul class="navigation-list">
+  <li class="navigation-list-item" data-ng-repeat="item in index">
+    <a class="navigation-link" data-ng-href="/countdown/{{ item.countdownNumber }}" data-ng-if="item.title">
       <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
       <span class="countdown-number">{{ item.countdownNumber }}</span>
       <span class="countdown-title">{{ item.title }}</span>
     </a>
-    <span data-ng-if="!item.title" class="countdown-unreleased">
+    <span class="countdown-unreleased" data-ng-if="!item.title">
       <span class="countdown-date">{{ item.releaseDate | formatDate }}</span>
       <span class="countdown-number">{{ item.countdownNumber }}</span>
     </span>

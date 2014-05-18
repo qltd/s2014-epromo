@@ -1,3 +1,5 @@
+# LOCALIZE AND RENAME TO .htaccess
+
 # Change YOUR_TOKEN to your prerender token and uncomment that line if you want to cache urls and view crawl stats
 # Change http://example.com (at the end of the last RewriteRule) to your website url
 

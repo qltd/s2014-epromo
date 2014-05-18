@@ -2,10 +2,7 @@
   <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
   <h3 data-ng-if="item.title">{{ item.countdownNumber }}. {{ item.title }}</h3>
 </header>
-<div class="loading-block" data-ng-if="!item">
-  <i class="fa fa-spin fa-spinner"></i>
-  <span class="loading-text">Loading</span>
-</div>
+<div class="loading-block" data-loading-block data-ng-if="!item"></div>
 <div class="content-text content-description" data-ng-bind-html="item.description | renderHtml"></div>
 <div class="content-text content-main" data-ng-bind-html="item.content | renderHtml"></div>
 <footer class="content-footer">

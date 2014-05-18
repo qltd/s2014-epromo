@@ -11,6 +11,7 @@ require('../assets/lib/angular-scroll/angular-scroll');
 
 // App dependencies
 require('../app/controllers');
+require('../app/directives');
 require('../app/filters');
 require('../app/services');
 
@@ -23,6 +24,7 @@ var app = angular.module('ePromo', [
   'ngRoute',
   'ngTouch',
   'ePromo.controllers',
+  'ePromo.directives',
   'ePromo.filters',
   'ePromo.services',
   'ePromo.routes'

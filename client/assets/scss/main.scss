@@ -128,9 +128,15 @@ a {
 .loading-block {
   margin: 75px 0;
   text-align: center;
-  @include font-details(null, $grey-text, 300);
+  color: $grey-text;
+  .fa {
+    margin: {
+      bottom: 10px;
+    }
+  }
   .loading-text {
     display: block;
+    @include font-details(1.5em, null, 300);
   }
 }
 

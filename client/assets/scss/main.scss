@@ -120,6 +120,19 @@ a {
   &.teal {
     color: $teal-text;
   }
+  &.fa-spin {
+    display: inline-block;
+  }
+}
+
+.load-container {
+  margin: 75px 0;
+  text-align: center;
+  color: $grey-text;
+  .load-text {
+    display: block;
+    font-weight: 300;
+  }
 }
 
 .navigation-list {

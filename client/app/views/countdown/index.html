@@ -1,3 +1,7 @@
+<div class="load-container" data-ng-if="index.length === 0">
+  <i class="fa fa-spin fa-spinner"></i>
+  <span class="load-text">Loading</span>
+</div>
 <ul class="navigation-list">
   <li class="navigation-list-item" data-ng-repeat="item in index">
     <a class="navigation-link" data-ng-href="/countdown/{{ item.countdownNumber }}" data-ng-if="item.title">

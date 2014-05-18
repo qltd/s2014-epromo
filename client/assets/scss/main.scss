@@ -125,13 +125,12 @@ a {
   }
 }
 
-.load-container {
+.loading-block {
   margin: 75px 0;
   text-align: center;
-  color: $grey-text;
-  .load-text {
+  @include font-details(null, $grey-text, 300);
+  .loading-text {
     display: block;
-    font-weight: 300;
   }
 }
 

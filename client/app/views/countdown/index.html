@@ -1,6 +1,6 @@
-<div class="load-container" data-ng-if="index.length === 0">
+<div class="loading-block" data-ng-if="!index">
   <i class="fa fa-spin fa-spinner"></i>
-  <span class="load-text">Loading</span>
+  <span class="loading-text">Loading</span>
 </div>
 <ul class="navigation-list">
   <li class="navigation-list-item" data-ng-repeat="item in index">

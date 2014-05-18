@@ -3,6 +3,7 @@
 config.js
 sftp-config.json
 .jshintrc
+.htaccess
 
 # NPM Packages #
 ################

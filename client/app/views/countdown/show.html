@@ -1,6 +1,6 @@
 <header class="content-header">
   <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
-  <h3 data-ng-if="item.title">{{ item.countdownNumber }}. {{ item.title }}</h3>
+  <h3>{{ item.countdownNumber ? item.countdownNumber + '.' : '' }} {{ item.title }}</h3>
 </header>
 <div class="loading-block" data-loading-block data-ng-if="!item"></div>
 <div class="content-text content-description" data-ng-bind-html="item.description | renderHtml"></div>

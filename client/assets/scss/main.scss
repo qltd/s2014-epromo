@@ -199,6 +199,7 @@ a {
 
 /*--Primary Content--*/
 .primary-content {
+  @extend .clearfix;
   margin: 36px 12px;
   .content-text {
     line-height: 1.75;
@@ -234,15 +235,8 @@ a {
   }
   .fa {
     display: inline;
-    margin: {
-      right: 16px;
-    }
+    margin: 0 8px;
     font-size: 1.875em;
-    &.fa-caret-right {
-      margin: {
-        right: 0;
-      }
-    }
   }
 }
 

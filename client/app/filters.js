@@ -14,9 +14,19 @@ app.filter('formatDate', ['Months', function (Months) {
 }]);
 
 /**
+ * Html to plain text filter
+ */
+app.filter('htmlToPlainText', [function () {
+  return function (input) {
+    input = input || '';
+    return String(input).replace(/<[^>]+>/gm, '');
+  };
+}]);
+
+/**
  * Trust-as-html filter
  */
-app.filter('renderHtml', ['$sce', function($sce) {
+app.filter('renderHtml', ['$sce', function ($sce) {
   return function (input) {
     input = input || '';
     return $sce.trustAsHtml(input);

@@ -18,6 +18,16 @@
     CONTENT
 \*------------------------------------*/
 
+/*--Primary Content--*/
+.primary-content {
+  width: 1180px;
+  .content-description {
+    padding: {
+      right: 7%;
+    }
+  }
+}
+
 /*--Primary Navigation--*/
 .primary-navigation {
   width: 1125px;

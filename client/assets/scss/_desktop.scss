@@ -24,6 +24,55 @@ a {
     CONTENT
 \*------------------------------------*/
 
+/*--Primary Content--*/
+.primary-content {
+  width: 940px;
+  .content-text {
+    float: left;
+  }
+  .content-description {
+    clear: left;
+    padding: {
+      right: 3%;
+    }
+    width: 33.3333%;
+  }
+  .content-main {
+    width: 66.6666%;
+  }
+}
+.content-header {
+  float: left;
+}
+.content-main {
+  margin: {
+    top: -20px;
+  }
+  p {
+    &:first-child {
+      margin: {
+        top: 0;
+      }
+    }
+  }
+}
+.content-footer {
+  margin: {
+    top: 0;
+  }
+}
+.content-navigation {
+  .navigation-list {
+    text-align: right;
+  }
+  .fa {
+    font-size: 3.125em;
+    &.fa-bars {
+      display: none;
+    }
+  }
+}
+
 /*--Primary Navigation--*/
 .primary-navigation {
   width: 900px;

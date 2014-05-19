@@ -63,6 +63,7 @@ strong {
 
 /*--Navigation--*/
 .primary-navigation {
+  display: block;
   .countdown-title, .countdown-number {
     @include Swiss-Light();
   }

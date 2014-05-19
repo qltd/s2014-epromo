@@ -35,6 +35,11 @@ strong {
   @include Swiss-Bold();
 }
 
+/* Prevent height distortion in IE8. */
+img {
+  width: auto !important;
+}
+
 /*------------------------------------*\
     UTILITIES
 \*------------------------------------*/

@@ -104,6 +104,14 @@ a {
   text-decoration: none;
 }
 
+img, iframe, object, video {
+  max-width: 100%;
+}
+
+img {
+  height: auto !important;
+}
+
 /*------------------------------------*\
     UTILITIES
 \*------------------------------------*/
@@ -208,10 +216,6 @@ a {
     margin: {
       bottom: 30px;
     }
-  }
-  img {
-    max-width: 100%;
-    height: auto !important;
   }
 }
 .content-header {

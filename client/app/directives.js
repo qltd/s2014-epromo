@@ -36,10 +36,10 @@ app.directive('resizeMediaHeight', ['$window', function ($window) {
         if (height > 0 && width > 0 && offsetWidth > 0) media[i].style.height = (( height * offsetWidth ) / width ) + 'px';
       }
     };
-    $window.setTimeout(function () {
+    element.ready(function () {
       media = element.find(attributes.resizeMediaHeight);
       count = media.length;
       if (count > 0) addResizeEvent();
-    }, 300);
+    });
   };
 }]);

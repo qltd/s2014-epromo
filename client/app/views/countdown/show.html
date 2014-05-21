@@ -4,7 +4,7 @@
 </header>
 <div class="loading-block" data-loading-block data-ng-if="!item"></div>
 <div class="content-text content-description" data-ng-bind-html="item.description | renderHtml"></div>
-<div class="content-text content-main" data-ng-bind-html="item.content | renderHtml" data-resize-media-height="iframe"></div>
+<div class="content-text content-main" data-ng-bind-html="item.content | renderHtml" data-ng-if="item.content" data-resize-media-height="iframe"></div>
 <footer class="content-footer">
   <nav class="content-navigation">
     <ul class="navigation-list">

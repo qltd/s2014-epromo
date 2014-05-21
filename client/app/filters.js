@@ -16,12 +16,12 @@ app.filter('formatDate', ['Months', function (Months) {
 /**
  * Html to plain text filter
  */
-app.filter('htmlToPlainText', [function () {
+app.filter('htmlToPlainText', function () {
   return function (input) {
     input = input || '';
     return String(input).replace(/<[^>]+>/gm, '');
   };
-}]);
+});
 
 /**
  * Trust-as-html filter

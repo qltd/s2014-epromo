@@ -96,20 +96,11 @@ app.factory('Countdown', ['$q', 'API', function ($q, API) {
 }]);
 
 /**
- * Fixed Element Service
- */
-app.factory('FixedElement', [function () {
-  return function () {
-
-  };
-}]);
-
-/**
  * Factory for routes that do not point to a controller or template
  */
 app.factory('NoView', ['Head', 'ScrollY', function (Head, ScrollY) {
   return function () {
-    ScrollY();
+    ScrollY('header');
     Head.setTitle('Countdown to Technology, Innovation, and Inspiration');
     Head.setDescription('Countdown to Technology, Innovation, and Inspiration');
   };
@@ -120,9 +111,11 @@ app.factory('NoView', ['Head', 'ScrollY', function (Head, ScrollY) {
  */
 app.factory('ScrollY', ['$document', function ($document) {
   return function (offset) {
-    if (!offset && offset !== 0) {
-      var header = document.getElementsByTagName('header');
-      if (header.length > 0) offset = header[0].offsetHeight;
+    if (!offset) offset = 0;
+    if (typeof offset === 'string') {
+      var elements = $document.find(offset);
+      if (elements.length > 0) offset = elements[0].offsetHeight;
+      else offset = 0;
     }
     $document.scrollTop(offset, 250);
   };

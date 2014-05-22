@@ -12,6 +12,32 @@ app.directive('loadingBlock', function () {
 });
 
 /**
+ * Media load directive
+ */
+app.directive('mediaLoadEvents', ['$compile', function ($compile) {
+  return function (scope, element, attributes) {
+    element.ready(function () {
+      var media = element.find('img');
+      var count = media.length;
+      while (count--) {
+        if (!media[count].complete) { // do not do anything to cached images; TODO: find similar measure for iframes
+          var loadingBlock = $compile('<div class="loading-block loading-media" data-loading-block></div>')(scope);
+          var m = angular.element(media[count]);
+          loadingBlock.css('width', m.css('width') || m.attr('width') + 'px' || '100%');
+          m.addClass('hidden');
+          m.after(loadingBlock);
+          m.one('load', function () {
+            var loadedMedia = angular.element(this);
+            loadedMedia.removeClass('hidden');
+            loadedMedia.next().remove();
+          });
+        }
+      }
+    });
+  };
+}]);
+
+/**
  * Adds responsiveness to tags that do not support automatically determined heights
  */
 app.directive('resizeMediaHeight', ['$window', function ($window) {
@@ -22,7 +48,7 @@ app.directive('resizeMediaHeight', ['$window', function ($window) {
         resizeElements();
       });
       scope.$on('$destroy', function () {
-        while (count--) media[count].style.display = 'none'; // prevents weird ie8 bug
+        media.css('display', 'none'); // prevents weird ie8 bug
         angular.element($window).off('resize');
       });
       resizeElements();
@@ -33,7 +59,7 @@ app.directive('resizeMediaHeight', ['$window', function ($window) {
         var height = parseInt(media[i].height || 0);
         var width = parseInt(media[i].width || 0);
         var offsetWidth = parseInt(media[i].offsetWidth || 0);
-        if (height > 0 && width > 0 && offsetWidth > 0) media[i].style.height = (( height * offsetWidth ) / width ) + 'px';
+        if (height > 0 && width > 0 && offsetWidth > 0) angular.element(media[i]).css('height', (( height * offsetWidth ) / width ) + 'px');
       }
     };
     element.ready(function () {

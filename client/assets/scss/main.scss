@@ -133,6 +133,11 @@ img, video {
   }
 }
 
+.hidden-loading {
+  position: absolute !important;
+  visibility: hidden;
+}
+
 .loading-block {
   padding: 75px 0;
   max-width: 100%;

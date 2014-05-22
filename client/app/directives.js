@@ -26,11 +26,11 @@ app.directive('mediaLoadEvents', ['$compile', function ($compile) {
           var loadingBlock = $compile('<div class="loading-block loading-media" data-loading-block></div>')(scope);
           var m = angular.element(media[count]);
           loadingBlock.css('width', media[count].style.width || m.attr('width') + 'px' || '100%');
-          m.addClass('hidden');
+          m.addClass('hidden-loading');
           m.after(loadingBlock);
           m.one('load', function () {
             var loadedMedia = angular.element(this);
-            loadedMedia.removeClass('hidden');
+            loadedMedia.removeClass('hidden-loading');
             loadedMedia.next().remove();
           });
         }

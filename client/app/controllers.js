@@ -7,8 +7,7 @@ var app = angular.module('ePromo.controllers', []);
  * TEMPLATE /app/views/countdown/index.html
  */
 app.controller('countdown.index', ['$scope', 'Countdown', function ($scope, Countdown) {
-  // 10 weekly dates, beginning on June 3, 2014
-  Countdown.generate(10, new Date(2014, 5, 3)).then(function (index) {
+  Countdown.generate(10, 7, new Date(2014, 5, 3)).then(function (index) { // 10 dates, in 7 day intervals, beginning on June 3, 2014
     $scope.index = index;
   }, function (failedIndex) {
     $scope.index = failedIndex;

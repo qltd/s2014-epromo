@@ -12,18 +12,20 @@ app.directive('loadingBlock', function () {
 });
 
 /**
- * Media load directive
+ * Adds temporary div with loading block directive after unloaded media
  */
 app.directive('mediaLoadEvents', ['$compile', function ($compile) {
   return function (scope, element, attributes) {
+    var tags = ['img', 'iframe'];
+    var i = tags.length;
     element.ready(function () {
-      var media = element.find('img');
-      var count = media.length;
-      while (count--) {
-        if (!media[count].complete) { // do not do anything to cached images; TODO: find similar measure for iframes
+      while (i--) {
+        var media = element.find(tags[i]);
+        var count = media.length;
+        while (count--) if (!media[count].complete) { // do not do anything to cached images; TODO: find similar measure for iframes
           var loadingBlock = $compile('<div class="loading-block loading-media" data-loading-block></div>')(scope);
           var m = angular.element(media[count]);
-          loadingBlock.css('width', m.css('width') || m.attr('width') + 'px' || '100%');
+          loadingBlock.css('width', media[count].style.width || m.attr('width') + 'px' || '100%');
           m.addClass('hidden');
           m.after(loadingBlock);
           m.one('load', function () {
@@ -38,7 +40,7 @@ app.directive('mediaLoadEvents', ['$compile', function ($compile) {
 }]);
 
 /**
- * Adds responsiveness to tags that do not support automatically determined heights
+ * Adds responsiveness to media-containing iframes that have set attributes for height and width
  */
 app.directive('resizeMediaHeight', ['$window', function ($window) {
   return function (scope, element, attributes) {
@@ -53,7 +55,7 @@ app.directive('resizeMediaHeight', ['$window', function ($window) {
       });
       resizeElements();
     };
-    var resizeElements = function () {
+    var resizeElements = function () { // this will only work if the media has its height set attributionally
       var i = count;
       while (i--) {
         var height = parseInt(media[i].height || 0);
@@ -63,7 +65,7 @@ app.directive('resizeMediaHeight', ['$window', function ($window) {
       }
     };
     element.ready(function () {
-      media = element.find(attributes.resizeMediaHeight);
+      media = element.find('iframe');
       count = media.length;
       if (count > 0) addResizeEvent();
     });

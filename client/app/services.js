@@ -59,14 +59,14 @@ app.factory('Countdown', ['$q', 'API', function ($q, API) {
   var max = -1;
   var min = -1;
   return {
-    generate: function (countdownLength, startDate) {
+    generate: function (countdownLength, countdownInterval, startDate) {
       var deferred = $q.defer();
       var _index = [];
       var i = countdownLength;
       var releaseDate = new Date(startDate);
       while (i--) {
         _index.push({ releaseDate: releaseDate, countdownNumber: i + 1 });
-        releaseDate = addDays(releaseDate, 7);
+        releaseDate = addDays(releaseDate, countdownInterval);
       }
       API('countdown').success(function (index) {
         var i = index.length;

@@ -136,7 +136,7 @@ img, video {
 /** allow videos to load @ full-size while hidden */
 .hidden-loading {
   position: absolute !important;
-  left: 0;
+  left: -100%;
   visibility: hidden;
   z-index: -1;
 }

@@ -40,22 +40,21 @@ app.directive('mediaLoadEvents', ['$compile', function ($compile) {
 }]);
 
 /**
- * Adds responsiveness to media-containing iframes that have set attributes for height and width
+ * Adds responsiveness to media-containing iframes (YouTube, Vimeo, etc.) that have set attributes for height and width
  */
 app.directive('resizeMediaHeight', ['$window', function ($window) {
   return function (scope, element, attributes) {
-    var count, media;
-    var addResizeEvent = function () {
+    var addResizeEvent = function (media, count) {
       angular.element($window).bind('resize', function () {
-        resizeElements();
+        resizeElements(media, count);
       });
       scope.$on('$destroy', function () {
         media.css('display', 'none'); // prevents weird ie8 bug
         angular.element($window).off('resize');
       });
-      resizeElements();
+      resizeElements(media, count);
     };
-    var resizeElements = function () { // this will only work if the media has its height set attributionally
+    var resizeElements = function (media, count) { // this will only work if the media has its height and width set attributionally
       var i = count;
       while (i--) {
         var height = parseInt(media[i].height || 0);
@@ -65,9 +64,9 @@ app.directive('resizeMediaHeight', ['$window', function ($window) {
       }
     };
     element.ready(function () {
-      media = element.find('iframe');
-      count = media.length;
-      if (count > 0) addResizeEvent();
+      var media = element.find('iframe');
+      var count = media.length;
+      if (count > 0) addResizeEvent(media, count);
     });
   };
 }]);

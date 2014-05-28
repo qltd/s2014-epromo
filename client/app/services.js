@@ -145,8 +145,3 @@ app.factory('Head', ['$rootScope', function ($rootScope) {
     }
   };
 }]);
-
-/**
- * <body> Service
- */
-app.factory('Body', ['$rootScope', function ($rootScope) {}]);

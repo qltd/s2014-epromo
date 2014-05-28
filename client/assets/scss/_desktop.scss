@@ -24,6 +24,68 @@ a {
     CONTENT
 \*------------------------------------*/
 
+/*--Primary Header--*/
+.primary-header {
+  .title {
+    float: left;
+  }
+  .information {
+    float: right;
+    display: block;
+    @include font-details(null, white, 300, 1.125);
+  }
+  .information-emphasized {
+    font-weight: 500;
+  }
+  .information-section {
+    float: left;
+    border: {
+      right: 1px solid white;
+    }
+    padding: {
+      right: 15px;
+      left: 15px;
+    };
+    height: 70px;
+  }
+  .information-about {
+    padding: {
+      top: 7px;
+    }
+    width: 195px;
+    font-size: 0.8125em;
+  }
+  .information-dates {
+    padding: {
+      top: 5px;
+    }
+    width: 285px;
+    font-size: 1.125em;
+  }
+  .information-sponsor {
+    border: {
+      right: none;
+    }
+    padding: {
+      top: 10px;
+    }
+    width: 175px;
+    font-size: 0.625em;
+  }
+  .information-sponsor-link {
+    display: block;
+    padding: {
+      top: 40px;
+    }
+    background-image: url('../img/icons.png');
+    background-position: center 0;
+    background-repeat: no-repeat;
+  }
+  .subtitle {
+    clear: both;
+  }
+}
+
 /*--Primary Content--*/
 .primary-content {
   width: 940px;

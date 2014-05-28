@@ -18,6 +18,32 @@
     CONTENT
 \*------------------------------------*/
 
+/*--Primary Header--*/
+.primary-header {
+  .title-link {
+    width: 330px;
+    height: 85px;
+    background-image: url("../img/logo.png");
+  }
+  .information-section {
+    float: left;
+    padding: {
+      right: 30px;
+      left: 30px;
+    };
+    height: 70px;
+  }
+  .information-about {
+    width: 225px;
+  }
+  .information-dates {
+    width: 315px;
+  }
+  .information-sponsor {
+    width: 205px;
+  }
+}
+
 /*--Primary Content--*/
 .primary-content {
   width: 1180px;

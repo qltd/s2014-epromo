@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "dependencies": {
     "angular": "1.2.x",
-    "angular-animate": "1.2.x",
     "angular-route": "1.2.x",
     "angular-scroll": "0.x",
     "angular-touch": "1.2.x",

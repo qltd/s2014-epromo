@@ -44,6 +44,27 @@ img {
     UTILITIES
 \*------------------------------------*/
 
+.fa {
+  &.beige {
+    &:after {
+      background-color: transparent;
+      background-image: url("../img/circle-beige.png");
+    }
+  }
+  &.orange {
+    &:after {
+      background-color: transparent;
+      background-image: url("../img/circle-orange.png");
+    }
+  }
+  &.teal {
+    &:after {
+      background-color: transparent;
+      background-image: url("../img/circle-teal.png");
+    }
+  }
+}
+
 .loading-block {
   .loading-text {
     @include Swiss-Light();
@@ -62,13 +83,18 @@ img {
 /*--Navigation--*/
 .primary-navigation {
   display: block;
+  .fa {
+    &:after {
+      display: none;
+    }
+  }
   .countdown-title, .countdown-number {
     @include Swiss-Light();
   }
   .countdown-date {
     @include Swiss-Medium();
     background-color: transparent;
-    background-image: url("../img/countdown-circle.png");
+    background-image: url("../img/circle-countdown.png");
   }
 }
 
@@ -89,11 +115,11 @@ img {
 }
 
 // Desktop
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1025px) {
   @import 'ie/desktop';
 }
 
 // Wide Desktop
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1280px) {
   @import 'ie/desktop-wide';
 }

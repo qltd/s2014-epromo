@@ -17,8 +17,12 @@
 
 /*--Header--*/
 .primary-header {
+  .title-link {
+    background-image: url("../img/logo@2x.png");
+    background-size: 330px 85px;
+  }
   .information-sponsor-link {
-    background-image: url('../img/icons@2x.png');
+    background-image: url('../img/acm-siggraph-icons@2x.png');
     background-size: 62px 30px;
   }
 }

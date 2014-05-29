@@ -10,6 +10,10 @@
     ELEMENTAL STYLES
 \*------------------------------------*/
 
+h2 {
+  font-size: 1.875em;
+}
+
 /*------------------------------------*\
     UTILITIES
 \*------------------------------------*/
@@ -20,10 +24,15 @@
 
 /*--Primary Header--*/
 .primary-header {
-  .title-link {
-    width: 330px;
-    height: 85px;
-    background-image: url("../img/logo.png");
+  .title {
+    margin: {
+      left: 5%;
+    }
+  }
+  .information {
+    margin: {
+      right: 5%;
+    }
   }
   .information-section {
     float: left;
@@ -34,22 +43,31 @@
     height: 70px;
   }
   .information-about {
-    width: 225px;
+    width: 195px;
+    padding: {
+      left: 0;
+    }
   }
   .information-dates {
     width: 315px;
   }
   .information-sponsor {
-    width: 205px;
+    width: 175px;
+    padding: {
+      right: 0;
+    }
+  }
+  .subtitle {
+    width: 1200px;
   }
 }
 
 /*--Primary Content--*/
 .primary-content {
-  width: 1180px;
+  width: 1200px;
   .content-description {
     padding: {
-      right: 7%;
+      right: 48px;
     }
   }
 }

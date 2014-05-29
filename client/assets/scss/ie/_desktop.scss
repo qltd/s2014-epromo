@@ -23,3 +23,16 @@
     @include Swiss-Medium();
   }
 }
+
+/*--Primary Navigation--*/
+.primary-navigation {
+  .navigation-link {
+    &:hover {
+      .fa {
+        &:after {
+          display: block;
+        }
+      }
+    }
+  }
+}

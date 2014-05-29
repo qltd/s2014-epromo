@@ -10,6 +10,10 @@
     ELEMENTAL STYLES
 \*------------------------------------*/
 
+h2 {
+  font-size: 1.5em;
+}
+
 a {
   &:hover {
     //text-decoration: underline;
@@ -26,11 +30,28 @@ a {
 
 /*--Primary Header--*/
 .primary-header {
+  padding: {
+    top: 60px;
+    right: 0;
+    left: 0;
+  }
   .title {
     float: left;
+    margin: {
+      top: 5px;
+      left: 2%;
+    }
+  }
+  .title-link {
+    width: 330px;
+    height: 85px;
+    background-image: url("../img/logo.png");
   }
   .information {
     float: right;
+    margin: {
+      right: 2%;
+    }
     display: block;
     @include font-details(null, white, 300, 1.125);
   }
@@ -51,8 +72,9 @@ a {
   .information-about {
     padding: {
       top: 7px;
+      left: 0;
     }
-    width: 195px;
+    width: 180px;
     font-size: 0.8125em;
   }
   .information-dates {
@@ -68,8 +90,9 @@ a {
     }
     padding: {
       top: 10px;
+      right: 0;
     }
-    width: 175px;
+    width: 160px;
     font-size: 0.625em;
   }
   .information-sponsor-link {
@@ -77,25 +100,27 @@ a {
     padding: {
       top: 40px;
     }
-    background-image: url('../img/icons.png');
+    background-image: url('../img/acm-siggraph-icons.png');
     background-position: center 0;
     background-repeat: no-repeat;
   }
   .subtitle {
     clear: both;
+    width: 960px;
+    margin: 0 auto;
   }
 }
 
 /*--Primary Content--*/
 .primary-content {
-  width: 940px;
+  width: 960px;
   .content-text {
     float: left;
   }
   .content-description {
     clear: left;
     padding: {
-      right: 3%;
+      right: 36px;
     }
     width: 33.3333%;
   }
@@ -138,4 +163,20 @@ a {
 /*--Primary Navigation--*/
 .primary-navigation {
   width: 900px;
+  .navigation-link {
+    &:hover {
+      .fa {
+        &:after {
+          opacity: 0.2;
+        }
+      }
+      .countdown-title {
+        color: white;
+      }
+    }
+  }
+  .countdown-title {
+    color: $black-text;
+    @include single-transition(color, 250ms, ease-out);
+  }
 }

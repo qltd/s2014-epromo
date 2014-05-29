@@ -115,6 +115,11 @@ a {
     width: 960px;
     margin: 0 auto;
   }
+  .subtitle-link {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 /*--Primary Content--*/
@@ -151,18 +156,12 @@ a {
 }
 .content-footer {
   margin: {
-    top: 0;
+    top: 10px;
   }
 }
 .content-navigation {
   .navigation-list {
     text-align: right;
-  }
-  .fa {
-    font-size: 3.125em;
-    &.fa-bars {
-      display: none;
-    }
   }
 }
 

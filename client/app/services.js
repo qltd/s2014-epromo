@@ -100,7 +100,7 @@ app.factory('Countdown', ['$q', 'API', function ($q, API) {
  */
 app.factory('NoView', ['Head', 'ScrollY', function (Head, ScrollY) {
   return function () {
-    ScrollY('header');
+    ScrollY(0);
     Head.setTitle('Countdown to Technology, Innovation, and Inspiration');
     Head.setDescription('Countdown to Technology, Innovation, and Inspiration');
   };

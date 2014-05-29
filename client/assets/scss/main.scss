@@ -23,25 +23,14 @@
     b. SIGGRAPH Libraries.......SIGGRAPH Specific Variables and Mixins
   2. UNIVERSAL STYLES...........Styles Applied to All Elements
   3. ELEMENTAL STYLES...........Styles for HTML Elements
-    a. Root Elements............Styles for Root Elements
-    b. Heading Elements.........Styles for Heading Tags
-    c. Form Elements............Styles for Form Elements
-    d. Sectioning Elements......Styles for Sectioning Elements
-    e. Flow Elements............Styles for Flow Elements
   4. UTILITIES..................Reusable Utility Classes
   5. CONTENT....................Page Content
-    a. Header...................Styles for Brand Images and Headings
-    b. Navigation...............Styles for Navigation
-    c. Primary Content..........Styles for Focal Content
-    d. Ancillary Content........Styles for Supplemental Content
-    e. Footer...................Footer Content
+    a. Primary Header...........Styles for Page Header
+    b. Primary Content..........Styles for Main Content
+    c. Primary Navigation.......Styles for Global Navigation
   6. MEDIA QUERIES..............Media Queries
     a. Screen Width.............Imports Screen Width Stylesheet(s)
     b. Pixel Density............Imports HiDPI Stylesheet(s)
-    c. Print....................Imports Print Stylesheet(s)
-  7. APPENDIX...................Additional Information
-    a. Rule Structure...........Heirarchy of CSS Rules
-    b. Citations................Giving Credit Where Credit is Due
 
 \*---------------------------------------------------------------------*/
 
@@ -196,6 +185,9 @@ img, video {
   }
   .information {
     display: none;
+  }
+  .subtitle-link {
+    color: $black-text;
   }
 }
 

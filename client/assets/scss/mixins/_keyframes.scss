@@ -1,0 +1,12 @@
+
+//-
+ // @mixin keyframes
+ //
+ // Mixin for naming and vendor prefixing keyframe declarations
+ //-
+@mixin keyframes($name) {
+  @-webkit-keyframes $name { @content; }
+  @-moz-keyframes $name { @content; }
+  @-o-keyframes $name { @content; }
+  @keyframes $name { @content; }
+}

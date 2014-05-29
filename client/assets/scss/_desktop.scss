@@ -118,6 +118,7 @@ a {
   .subtitle-link {
     &:hover {
       text-decoration: none;
+      @include experimental('animation', color-wheel 15s infinite, webkit, moz, o, not ms);
     }
   }
 }
@@ -162,6 +163,12 @@ a {
 .content-navigation {
   .navigation-list {
     text-align: right;
+  }
+  .navigation-link {
+    @include single-transition(color, 100ms, ease-out);
+    &:hover {
+      color: white;
+    }
   }
 }
 

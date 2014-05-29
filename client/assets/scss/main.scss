@@ -23,7 +23,7 @@
     b. SIGGRAPH Libraries.......SIGGRAPH Specific Variables and Mixins
   2. UNIVERSAL STYLES...........Styles Applied to All Elements
   3. ELEMENTAL STYLES...........Styles for HTML Elements
-  4. UTILITIES..................Reusable Utility Classes
+  4. UTILITIES..................Reusable Classes and Declarations
   5. CONTENT....................Page Content
     a. Primary Header...........Styles for Page Header
     b. Primary Content..........Styles for Main Content
@@ -104,6 +104,18 @@ img, video {
 /*------------------------------------*\
     UTILITIES
 \*------------------------------------*/
+
+@include keyframes(color-wheel) {
+  0%, 100% {
+    color: $black-text;
+  }
+  33% {
+    color: darken($teal-text, 15%);
+  }
+  67% {
+    color: darken($orange-text, 35%);
+  }
+}
 
 .fa {
   display: block;

@@ -1,12 +1,12 @@
 <header class="content-header">
   <i data-ng-class="['fa', item.fontAwesomeClass, item.fontAwesomeColor]"></i>
-  <h3>{{ item.countdownNumber ? item.countdownNumber + '.' : '' }} {{ item.title }}</h3>
+  <h3>{{ item.countdownNumber ? item.countdownNumber + '. ' : '' }}{{ item.title }}</h3>
 </header>
 <div class="loading-block" data-loading-block data-ng-if="!item"></div>
 <div class="content-text content-description" data-ng-bind-html="item.description | renderHtml"></div>
 <div class="content-text content-main" data-ng-bind-html="item.content | renderHtml" data-ng-if="item.content" data-media-load-events data-resize-media-height></div>
 <footer class="content-footer">
-  <nav class="content-navigation">
+  <nav class="content-navigation" data-ng-if="item">
     <ul class="navigation-list">
       <li class="navigation-list-item">
         <a class="navigation-link" title="Previous" data-ng-href="{{ '/countdown/' + Countdown.previous(item.countdownNumber) }}" data-ng-if="Countdown.previous(item.countdownNumber)"><i class="fa fa-caret-left"></i></a>

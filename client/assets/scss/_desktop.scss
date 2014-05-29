@@ -173,6 +173,7 @@ a {
     &:hover {
       .fa {
         &:after {
+          visibility: visible;
           opacity: 0.2;
         }
       }

@@ -272,6 +272,7 @@ img, video {
       border-radius: 50%;
       width: 140px;
       height: 140px;
+      visibility: hidden;
       opacity: 0;
       @include single-transition(opacity, 100ms, ease-out);
     }

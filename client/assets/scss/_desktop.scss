@@ -16,13 +16,19 @@ h2 {
 
 a {
   &:hover {
-    //text-decoration: underline;
+    text-decoration: underline;
   }
 }
 
 /*------------------------------------*\
     UTILITIES
 \*------------------------------------*/
+
+.navigation-link {
+  &:hover {
+    text-decoration: none;
+  }
+}
 
 /*------------------------------------*\
     CONTENT

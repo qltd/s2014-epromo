@@ -4,6 +4,16 @@
 </header>
 <div class="loading-block" data-loading-block data-ng-if="!item"></div>
 <div class="content-text content-description" data-ng-bind-html="item.description | renderHtml"></div>
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+<a class="addthis_counter addthis_pill_style"></a>
+</div>
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53877b4754f18c35"></script>
+<!-- AddThis Button END -->
 <div class="content-text content-main" data-ng-bind-html="item.content | renderHtml" data-ng-if="item.content" data-media-load-events data-resize-media-height></div>
 <footer class="content-footer">
   <nav class="content-navigation" data-ng-if="item">

@@ -273,7 +273,7 @@ img, video {
       width: 140px;
       height: 140px;
       opacity: 0;
-      @include single-transition(opacity, 250ms, ease-out);
+      @include single-transition(opacity, 100ms, ease-out);
     }
   }
   .countdown-number {

@@ -183,6 +183,6 @@ a {
   }
   .countdown-title {
     color: $black-text;
-    @include single-transition(color, 250ms, ease-out);
+    @include single-transition(color, 100ms, ease-out);
   }
 }

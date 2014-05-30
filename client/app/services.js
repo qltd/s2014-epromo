@@ -32,6 +32,13 @@ app.factory('_', function () {
   return require('underscore');
 });
 
+/**
+ * AddThis Service
+ */
+app.factory('addthis', ['$window', function ($window) {
+  return $window.addthis;
+}]);
+
 /*------------------------------------*\
     GENERAL SERVICES
 \*------------------------------------*/
@@ -141,7 +148,7 @@ app.factory('Head', ['$rootScope', function ($rootScope) {
       description = d;
     },
     setTitle: function (t) {
-      title = t + ' | SIGGRAPH 2014';
+      title = t;
     }
   };
 }]);

@@ -3,6 +3,66 @@
 var app = angular.module('ePromo.directives', []);
 
 /**
+ * AddThis async init
+ */
+app.directive('addthisInit', ['$document', 'addthis', function ($document, addthis) {
+  return function (scope, element, attributes) {
+    $document.ready(function () {
+      addthis.init();
+    });
+  };
+}]);
+
+/**
+ * AddThis async toolbox
+ */
+app.directive('addthisToolbox', ['addthis', function (addthis) {
+  return {
+    link: function (scope, element, attributes) {
+      element.ready(function () {
+        addthis.toolbox('.addthis_toolbox', {}, {
+          description: attributes.description,
+          title: attributes.title,
+          url: attributes.url
+        });
+        addthis.counter('.addthis_pill_style', {}, {
+          description: attributes.description,
+          title: attributes.title,
+          url: attributes.url
+        });
+      });
+    },
+    scope: true,
+    templateUrl: '/countdown/app/views/addthis/show.html'
+  };
+}]);
+
+/**
+ * Append AddThis toolbox to an element's content
+ */
+app.directive('appendAddthis', ['$compile', '$filter', '$location', '$window', function ($compile, $filter, $location, $window) {
+  return function (scope, element, attributes) {
+    element.ready(function () {
+      var addThis = angular.element($window.document.createElement('div'));
+      var container = angular.element($window.document.createElement('div'));
+      addThis.attr({
+        class: 'addthis_toolbox addthis_default_style',
+        'data-addthis-toolbox': '',
+        'data-url': $location.absUrl(),
+        'data-description': attributes.addthisDescription,
+        'data-title': attributes.addthisTitle
+      });
+      addThis = $compile(addThis)(scope);
+      container.attr({
+        class: 'social-icons-block'
+      });
+      container.html('<i class="fa fa-share-square"></i> Share');
+      element.append(container.append(addThis));
+    });
+  };
+}]);
+
+/**
  * Markup to display whie content is loading
  */
 app.directive('loadingBlock', function () {

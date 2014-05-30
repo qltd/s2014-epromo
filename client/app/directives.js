@@ -88,14 +88,10 @@ app.directive('mediaLoadEvents', ['$compile', function ($compile) {
           loadingBlock.css('width', media[count].style.width || m.attr('width') + 'px' || '100%');
           m.addClass('hidden-loading');
           m.after(loadingBlock);
-          // m.one('load', function () {
-          //   var loadedMedia = angular.element(this);
-          //   loadedMedia.removeClass('hidden-loading');
-          //   loadedMedia.next().remove();
-          // });
-          m.ready(function () {
-            m.removeClass('hidden-loading');
-            m.next().remove();
+          m.one('load', function () {
+            var loadedMedia = angular.element(this);
+            loadedMedia.removeClass('hidden-loading');
+            loadedMedia.next().remove();
           });
         }
       }

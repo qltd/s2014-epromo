@@ -7,22 +7,25 @@ var app = angular.module('ePromo.directives', []);
  */
 app.directive('addthisAppend', ['$compile', '$filter', '$location', '$window', function ($compile, $filter, $location, $window) {
   return function (scope, element, attributes) {
+    scope.toggleSocial = function () {
+      angular.element($window.document.getElementById(attributes.addthisId)).toggleClass('hidden');
+    };
     element.ready(function () {
       var addThis = angular.element($window.document.createElement('div'));
       var container = angular.element($window.document.createElement('div'));
       addThis.attr({
-        class: 'addthis_toolbox addthis_default_style',
+        class: 'addthis_toolbox addthis_default_style social-icons hidden',
         'data-addthis-toolbox': '',
         'data-url': $location.absUrl(),
         'data-description': attributes.addthisDescription,
-        'data-title': attributes.addthisTitle
+        'data-title': attributes.addthisTitle,
+        id: attributes.addthisId
       });
-      addThis = $compile(addThis)(scope);
       container.attr({
-        class: 'social-icons-block'
+        class: 'content-social'
       });
-      container.html('<i class="fa fa-share-square"></i> Share');
-      element.append(container.append(addThis));
+      container.html('<h4 class="social-heading" data-ng-click="toggleSocial()"><i class="fa fa-share-square"></i> Share</h4>');
+      element.append($compile(container.append(addThis))(scope));
     });
   };
 }]);
@@ -44,13 +47,16 @@ app.directive('addthisInit', ['$document', 'addthis', function ($document, addth
 app.directive('addthisToolbox', ['addthis', function (addthis) {
   return {
     link: function (scope, element, attributes) {
+      var pill = scope.pill = {
+        id: attributes.id + '-pill'
+      };
       element.ready(function () {
-        addthis.toolbox('.addthis_toolbox', {}, {
+        addthis.toolbox('#' + attributes.id, {}, {
           description: attributes.description,
           title: attributes.title,
           url: attributes.url
         });
-        addthis.counter('.addthis_pill_style', {}, {
+        addthis.counter('#' + pill.id, {}, {
           description: attributes.description,
           title: attributes.title,
           url: attributes.url

@@ -3,6 +3,16 @@
 var app = angular.module('ePromo.filters', []);
 
 /**
+ * AddThis id
+ */
+app.filter('addthisId', function () {
+  return function (input) {
+    input = input || '';
+    return 'addthis-toolbox-' + input;
+  };
+});
+
+/**
  * Format date
  */
 app.filter('formatDate', ['Months', function (Months) {

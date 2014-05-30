@@ -71,7 +71,7 @@ h1 {
   margin: 0 0 32px;
 }
 
-h2, h3 {
+h2, h3, h4 {
   margin: 0;
   font-weight: 300;
 }
@@ -84,8 +84,12 @@ h3 {
   @include font-details(1em, white);
 }
 
+h4 {
+  @include font-details(1em, $grey-text);
+}
+
 p {
-  @include font-details(0.875em, $beige-text, 300);
+  @include font-details(0.875em, $beige-text, 400);
 }
 
 a {
@@ -177,6 +181,30 @@ img, video {
   text-align: center;
   .navigation-list-item {
     display: inline-block;
+  }
+}
+
+.social-heading {
+  cursor: pointer;
+  .fa {
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin: {
+      right: 3px;
+    }
+    font-size: 1.5em;
+  }
+}
+.social-icons {
+  position: absolute;
+  padding: 20px 20px 10px;
+  border-radius: 5px;
+  background-color: $grey-text;
+  background-color: rgba($grey-text, 0.8);
+  .social-icons-item {
+    clear: left;
+    height: 30px;
   }
 }
 

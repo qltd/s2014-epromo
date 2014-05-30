@@ -3,6 +3,31 @@
 var app = angular.module('ePromo.directives', []);
 
 /**
+ * Append AddThis toolbox to an element's content
+ */
+app.directive('addthisAppend', ['$compile', '$filter', '$location', '$window', function ($compile, $filter, $location, $window) {
+  return function (scope, element, attributes) {
+    element.ready(function () {
+      var addThis = angular.element($window.document.createElement('div'));
+      var container = angular.element($window.document.createElement('div'));
+      addThis.attr({
+        class: 'addthis_toolbox addthis_default_style',
+        'data-addthis-toolbox': '',
+        'data-url': $location.absUrl(),
+        'data-description': attributes.addthisDescription,
+        'data-title': attributes.addthisTitle
+      });
+      addThis = $compile(addThis)(scope);
+      container.attr({
+        class: 'social-icons-block'
+      });
+      container.html('<i class="fa fa-share-square"></i> Share');
+      element.append(container.append(addThis));
+    });
+  };
+}]);
+
+/**
  * AddThis async init
  */
 app.directive('addthisInit', ['$document', 'addthis', function ($document, addthis) {
@@ -38,31 +63,6 @@ app.directive('addthisToolbox', ['addthis', function (addthis) {
 }]);
 
 /**
- * Append AddThis toolbox to an element's content
- */
-app.directive('appendAddthis', ['$compile', '$filter', '$location', '$window', function ($compile, $filter, $location, $window) {
-  return function (scope, element, attributes) {
-    element.ready(function () {
-      var addThis = angular.element($window.document.createElement('div'));
-      var container = angular.element($window.document.createElement('div'));
-      addThis.attr({
-        class: 'addthis_toolbox addthis_default_style',
-        'data-addthis-toolbox': '',
-        'data-url': $location.absUrl(),
-        'data-description': attributes.addthisDescription,
-        'data-title': attributes.addthisTitle
-      });
-      addThis = $compile(addThis)(scope);
-      container.attr({
-        class: 'social-icons-block'
-      });
-      container.html('<i class="fa fa-share-square"></i> Share');
-      element.append(container.append(addThis));
-    });
-  };
-}]);
-
-/**
  * Markup to display whie content is loading
  */
 app.directive('loadingBlock', function () {
@@ -88,10 +88,14 @@ app.directive('mediaLoadEvents', ['$compile', function ($compile) {
           loadingBlock.css('width', media[count].style.width || m.attr('width') + 'px' || '100%');
           m.addClass('hidden-loading');
           m.after(loadingBlock);
-          m.one('load', function () {
-            var loadedMedia = angular.element(this);
-            loadedMedia.removeClass('hidden-loading');
-            loadedMedia.next().remove();
+          // m.one('load', function () {
+          //   var loadedMedia = angular.element(this);
+          //   loadedMedia.removeClass('hidden-loading');
+          //   loadedMedia.next().remove();
+          // });
+          m.ready(function () {
+            m.removeClass('hidden-loading');
+            m.next().remove();
           });
         }
       }
@@ -102,7 +106,7 @@ app.directive('mediaLoadEvents', ['$compile', function ($compile) {
 /**
  * Adds responsiveness to media-containing iframes (YouTube, Vimeo, etc.) that have set attributes for height and width
  */
-app.directive('resizeMediaHeight', ['$window', function ($window) {
+app.directive('mediaResizeHeight', ['$window', function ($window) {
   return function (scope, element, attributes) {
     var addResizeEvent = function (media, count) {
       angular.element($window).bind('resize', function () {

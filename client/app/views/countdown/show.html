@@ -3,8 +3,8 @@
   <h3>{{ item.countdownNumber ? item.countdownNumber + '. ' : '' }}{{ item.title }}</h3>
 </header>
 <div class="loading-block" data-loading-block data-ng-if="!item"></div>
-<div class="content-text content-description" data-append-addthis data-addthis-description="{{ item.description | htmlToPlainText | summarize }}" data-addthis-title="{{ item.title | pageTitle }}" data-ng-bind-html="item.description | renderHtml" data-ng-if="item.description"></div>
-<div class="content-text content-main" data-ng-bind-html="item.content | renderHtml" data-ng-if="item.content" data-media-load-events data-resize-media-height></div>
+<div class="content-text content-description" data-addthis-append data-addthis-description="{{ item.description | htmlToPlainText | summarize }}" data-addthis-title="{{ item.title | pageTitle }}" data-ng-bind-html="item.description | renderHtml" data-ng-if="item.description"></div>
+<div class="content-text content-main" data-ng-bind-html="item.content | renderHtml" data-ng-if="item.content" data-media-load-events data-media-resize-height></div>
 <footer class="content-footer">
   <nav class="content-navigation" data-ng-if="item">
     <ul class="navigation-list">

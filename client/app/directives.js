@@ -5,7 +5,7 @@ var app = angular.module('ePromo.directives', []);
 /**
  * Append AddThis toolbox to an element's content
  */
-app.directive('addthisAppend', ['$compile', '$filter', '$location', '$window', function ($compile, $filter, $location, $window) {
+app.directive('addthisAppend', ['$compile', '$location', '$window', function ($compile, $location, $window) {
   return function (scope, element, attributes) {
     scope.toggleSocial = function () {
       angular.element($window.document.getElementById(attributes.addthisId)).toggleClass('hidden');
@@ -33,12 +33,8 @@ app.directive('addthisAppend', ['$compile', '$filter', '$location', '$window', f
 /**
  * AddThis async init
  */
-app.directive('addthisInit', ['$document', '$window', 'addthis', function ($document, $window, addthis) {
+app.directive('addthisInit', ['$document', 'addthis', function ($document, addthis) {
   return function (scope, element, attributes) {
-    $window.addthis_config = $window.addthis_config || {};
-    $window.addthis_config.data_track_addressbar = false;
-    $window.addthis_config.data_track_clickback = false;
-    $window.addthis_config.pubid = 'ra-538787ae42451625';
     $document.ready(function () {
       addthis.init();
     });

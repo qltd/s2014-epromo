@@ -36,6 +36,10 @@ app.factory('_', function () {
  * AddThis Service
  */
 app.factory('addthis', ['$window', function ($window) {
+  $window.addthis_config = $window.addthis_config || {};
+  $window.addthis_config.data_track_addressbar = false;
+  $window.addthis_config.data_track_clickback = false;
+  $window.addthis_config.pubid = 'ra-538787ae42451625';
   return $window.addthis;
 }]);
 

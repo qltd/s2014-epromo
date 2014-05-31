@@ -13,9 +13,9 @@ app.filter('addthisId', function () {
 });
 
 /**
- * Format date
+ * Format countdown date
  */
-app.filter('formatDate', ['Months', function (Months) {
+app.filter('countdownDate', ['Months', function (Months) {
   return function (input) {
     input = input || '';
     input = new Date(input);
@@ -24,12 +24,33 @@ app.filter('formatDate', ['Months', function (Months) {
 }]);
 
 /**
+ * Format countdown title
+ */
+app.filter('countdownTitle', function () {
+  return function (input, number) {
+    input = input || '';
+    number = number || -1;
+    return number > -1 ? number + '. ' + input : input;
+  };
+});
+
+/**
  * Html to plain text filter
  */
 app.filter('htmlToPlainText', function () {
   return function (input) {
     input = input || '';
     return String(input).replace(/<[^>]+>/gm, '');
+  };
+});
+
+/**
+ * Format title
+ */
+app.filter('pageTitle', function () {
+  return function (input) {
+    input = input || '';
+    return input + ' | SIGGRAPH 2014';
   };
 });
 
@@ -44,22 +65,14 @@ app.filter('renderHtml', ['$sce', function ($sce) {
 }]);
 
 /**
- * Format title
- */
-app.filter('pageTitle', function () {
-  return function (input) {
-    input = input || '';
-    return input + ' | SIGGRAPH 2014';
-  };
-});
-
-/**
  * Summarize filter
  */
 app.filter('summarize', function () {
-  return function (input) {
+  return function (input, maxLength) {
     input = input || '';
-    input = String(input).substring(0, 160);
+    maxLength = maxLength || 160;
+    if (input.length <= maxLength) return input;
+    input = String(input).substring(0, maxLength);
     var output = String(input).match(/.*[\.\?\!]/);
     if (output && output[0]) return output[0];
     return input;

@@ -7,7 +7,7 @@
       <span class="countdown-title">{{ item.title }}</span>
     </a>
     <span class="countdown-unreleased" data-ng-if="!item.title">
-      <span class="countdown-date">{{ item.releaseDate | formatDate }}</span>
+      <span class="countdown-date">{{ item.releaseDate | countdownDate }}</span>
       <span class="countdown-number">{{ item.countdownNumber }}</span>
     </span>
   </li>

@@ -188,6 +188,7 @@ img, video {
   display: inline-block;
   cursor: pointer;
   color: $grey-text;
+  @include experimental('user-select', none, webkit, moz, not o);
   .fa {
     display: inline-block;
     position: relative;
@@ -206,7 +207,15 @@ img, video {
   background-color: rgba($grey-text, 0.8);
   .social-icons-item {
     clear: left;
+    margin: {
+      bottom: 20px;
+    }
     height: 30px;
+  }
+  .addthis_counter {
+    margin: {
+      bottom: 0;
+    }
   }
 }
 

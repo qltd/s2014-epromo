@@ -184,14 +184,16 @@ img, video {
   }
 }
 
-.social-heading {
+.social-toggle {
+  display: inline-block;
   cursor: pointer;
+  color: $grey-text;
   .fa {
     display: inline-block;
     position: relative;
     top: 2px;
     margin: {
-      right: 3px;
+      right: 7px;
     }
     font-size: 1.5em;
   }

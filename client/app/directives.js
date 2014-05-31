@@ -24,7 +24,7 @@ app.directive('addthisAppend', ['$compile', '$filter', '$location', '$window', f
       container.attr({
         class: 'content-social'
       });
-      container.html('<h4 class="social-heading" data-ng-click="toggleSocial()"><i class="fa fa-share-square"></i> Share</h4>');
+      container.html('<h4><a class="social-toggle" role="button" data-ng-click="toggleSocial()"><i class="fa fa-share-square"></i>Share</a></h4>');
       element.append($compile(container.append(addThis))(scope));
     });
   };
@@ -33,8 +33,12 @@ app.directive('addthisAppend', ['$compile', '$filter', '$location', '$window', f
 /**
  * AddThis async init
  */
-app.directive('addthisInit', ['$document', 'addthis', function ($document, addthis) {
+app.directive('addthisInit', ['$document', '$window', 'addthis', function ($document, $window, addthis) {
   return function (scope, element, attributes) {
+    $window.addthis_config = $window.addthis_config || {};
+    $window.addthis_config.data_track_addressbar = false;
+    $window.addthis_config.data_track_clickback = false;
+    $window.addthis_config.pubid = 'ra-538787ae42451625';
     $document.ready(function () {
       addthis.init();
     });
@@ -90,14 +94,15 @@ app.directive('mediaLoadEvents', ['$compile', function ($compile) {
         var count = media.length;
         while (count--) if (!media[count].complete) { // do not do anything to cached images; TODO: find similar measure for iframes
           var loadingBlock = $compile('<div class="loading-block loading-media" data-loading-block></div>')(scope);
-          var m = angular.element(media[count]);
-          loadingBlock.css('width', media[count].style.width || m.attr('width') + 'px' || '100%');
-          m.addClass('hidden-loading');
-          m.after(loadingBlock);
-          m.one('load', function () {
+          var mediaElement = angular.element(media[count]);
+          loadingBlock.css('width', media[count].style.width || mediaElement.attr('width') + 'px' || '100%');
+          mediaElement.addClass('hidden-loading');
+          mediaElement.after(loadingBlock);
+          mediaElement.one('load', function () {
             var loadedMedia = angular.element(this);
+            var loadingBlock = loadedMedia.next();
+            if (loadingBlock.hasClass('loading-block')) loadingBlock.remove();
             loadedMedia.removeClass('hidden-loading');
-            loadedMedia.next().remove();
           });
         }
       }

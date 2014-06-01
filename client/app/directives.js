@@ -80,19 +80,20 @@ app.directive('addthisToolbox', ['addthis', function (addthis) {
 app.directive('loadingBlock', ['$window', function ($window) {
   return {
     link: function (scope, element, attributes) {
+      var loadingText = scope.loadingText = scope.loadingText || 'Loading';
       var timeout = function () {
         $window.setTimeout(function () {
+          if (!(!!element && (!!element.offsetWidth || (!!element[0] && !!element[0].offsetWidth)))) return;
           scope.loadingText = 'This is taking longer than expected. ';
           scope.reloadText = attributes.relatedMedia ? 'Reload Media' : 'Reload Page';
           scope.$apply();
         }, attributes.reloadNotificationTime || 10000);
       };
-      scope.loadingText = 'Loading';
       scope.reload = function () {
         if (!attributes.relatedMedia) return $window.document.location.reload();
         var mediaElement = angular.element($window.document.getElementById(attributes.relatedMedia));
         mediaElement.attr('src', mediaElement.attr('src'));
-        scope.loadingText = 'Loading';
+        scope.loadingText = loadingText;
         scope.reloadText = '';
         timeout();
       };
@@ -101,7 +102,7 @@ app.directive('loadingBlock', ['$window', function ($window) {
       });
     },
     scope: true,
-    template: '<i class="fa fa-spin fa-spinner"></i><span class="loading-text" data-ng-if="loadingText">{{ loadingText }}<a class="button loading-text-reload" role="button" data-ng-click="reload()" data-ng-if="reloadText">{{ reloadText }}</a></span>'
+    template: '<i class="fa fa-spin fa-spinner" data-ng-if="loadingText"></i><span class="loading-text" data-ng-if="loadingText">{{ loadingText }}<a class="button loading-text-reload" role="button" data-ng-click="reload()" data-ng-if="reloadText">{{ reloadText }}</a></span>'
   };
 }]);
 
@@ -112,6 +113,7 @@ app.directive('mediaLoadEvents', ['$compile', '$window', function ($compile, $wi
   return function (scope, element, attributes) {
     var tags = ['img', 'iframe'];
     var i = tags.length;
+    scope.loadingText = 'Loading';
     element.ready(function () {
       while (i--) {
         var media = element.find(tags[i]);

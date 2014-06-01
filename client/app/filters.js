@@ -49,7 +49,7 @@ app.filter('htmlToPlainText', function () {
  */
 app.filter('pageTitle', function () {
   return function (input) {
-    input = input || '';
+    input = input || 'Countdown to Technology, Innovation, and Inspiration';
     return input + ' | SIGGRAPH 2014';
   };
 });

@@ -5,18 +5,24 @@ var app = angular.module('ePromo.directives', []);
 /**
  * Append AddThis toolbox to an element's content
  */
-app.directive('addthisAppend', ['$compile', '$location', '$window', function ($compile, $location, $window) {
+app.directive('addthisAppend', ['$compile', '$document', '$location', '$window', function ($compile, $document, $location, $window) {
   return function (scope, element, attributes) {
-    scope.toggleSocial = function () {
-      angular.element($window.document.getElementById(attributes.addthisId)).toggleClass('hidden');
+    scope.toggleSocial = function (e) {
+      var addThis = angular.element($window.document.getElementById(attributes.addthisId));
+      if (!addThis.hasClass('hidden-social')) return;
+      e.stopPropagation();
+      $document.one('click', function () {
+        addThis.addClass('hidden-social');
+      });
+      addThis.removeClass('hidden-social');
     };
     element.ready(function () {
       var addThis = angular.element($window.document.createElement('div'));
       var container = angular.element($window.document.createElement('div'));
       addThis.attr({
-        class: 'addthis_toolbox addthis_default_style social-icons hidden',
+        class: 'addthis_toolbox addthis_default_style social-icons hidden-social',
         'data-addthis-toolbox': '',
-        'data-url': $location.absUrl(),
+        'data-url': String($location.absUrl()).replace(/\/?#!/, ''),
         'data-description': attributes.addthisDescription,
         'data-title': attributes.addthisTitle,
         id: attributes.addthisId
@@ -24,7 +30,7 @@ app.directive('addthisAppend', ['$compile', '$location', '$window', function ($c
       container.attr({
         class: 'content-social'
       });
-      container.html('<h4><a class="social-toggle" role="button" data-ng-click="toggleSocial()"><i class="fa fa-share-square"></i>Share</a></h4>');
+      container.html('<h4><a class="social-toggle" role="button" data-ng-click="toggleSocial($event)"><i class="fa fa-share-square"></i>Share</a></h4>');
       element.append($compile(container.append(addThis))(scope));
     });
   };
@@ -112,11 +118,11 @@ app.directive('mediaLoadEvents', ['$compile', function ($compile) {
 app.directive('mediaResizeHeight', ['$window', function ($window) {
   return function (scope, element, attributes) {
     var addResizeEvent = function (media, count) {
-      angular.element($window).bind('resize', function () {
+      angular.element($window).on('resize', function () {
         resizeElements(media, count);
       });
       scope.$on('$destroy', function () {
-        media.css('display', 'none'); // prevents weird ie8 bug
+        media.css('display', 'none'); // prevents weird IE8 bug
         angular.element($window).off('resize');
       });
       resizeElements(media, count);

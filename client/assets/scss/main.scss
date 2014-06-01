@@ -155,6 +155,11 @@ img, video {
   z-index: -1;
 }
 
+.hidden-social {
+  margin-left: -100%;
+  @include transition-timing-function(ease-in !important);
+}
+
 .loading-block {
   padding: 75px 0;
   max-width: 100%;
@@ -205,6 +210,7 @@ img, video {
   border-radius: 5px;
   background-color: $grey-text;
   background-color: rgba($grey-text, 0.8);
+  @include single-transition(margin, 750ms, ease-out);
   .social-icons-item {
     clear: left;
     margin: {

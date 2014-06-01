@@ -70,7 +70,7 @@ strong {
   @include Swiss-Bold();
 }
 
-/* Prevent height distortion in IE8. */
+/** prevent height distortion in IE8 */
 img {
   width: auto !important;
 }
@@ -103,6 +103,18 @@ img {
 .loading-block {
   .loading-text {
     @include Swiss-Light();
+  }
+}
+
+/** hide AddThis buttons that are problematic for IE8 */
+.social-icons {
+  .addthis_button_tweet, .addthis_counter {
+    display: none;
+  }
+  .addthis_button_google_plusone {
+    margin: {
+      bottom: 0;
+    }
   }
 }
 

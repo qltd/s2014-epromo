@@ -121,6 +121,10 @@ img, video {
   }
 }
 
+.button {
+  cursor: pointer;
+}
+
 .fa {
   display: block;
   font-size: 3.125em;
@@ -191,7 +195,6 @@ img, video {
 
 .social-toggle {
   display: inline-block;
-  cursor: pointer;
   color: $grey-text;
   @include experimental('user-select', none, webkit, moz, not o);
   .fa {

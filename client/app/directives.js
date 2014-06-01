@@ -30,7 +30,7 @@ app.directive('addthisAppend', ['$compile', '$document', '$location', '$window',
       container.attr({
         class: 'content-social'
       });
-      container.html('<h4><a class="social-toggle" role="button" data-ng-click="toggleSocial($event)"><i class="fa fa-share-square"></i>Share</a></h4>');
+      container.html('<h4><a class="button social-toggle" role="button" data-ng-click="toggleSocial($event)"><i class="fa fa-share-square"></i>Share</a></h4>');
       element.append($compile(container.append(addThis))(scope));
     });
   };
@@ -77,16 +77,38 @@ app.directive('addthisToolbox', ['addthis', function (addthis) {
 /**
  * Markup to display whie content is loading
  */
-app.directive('loadingBlock', function () {
+app.directive('loadingBlock', ['$window', function ($window) {
   return {
-    template: '<i class="fa fa-spin fa-spinner"></i><span class="loading-text">Loading</span>'
+    link: function (scope, element, attributes) {
+      var timeout = function () {
+        $window.setTimeout(function () {
+          scope.loadingText = 'This is taking longer than expected. ';
+          scope.reloadText = attributes.relatedMedia ? 'Reload Media' : 'Reload Page';
+          scope.$apply();
+        }, attributes.reloadNotificationTime || 10000);
+      };
+      scope.loadingText = 'Loading';
+      scope.reload = function () {
+        if (!attributes.relatedMedia) return $window.document.location.reload();
+        var mediaElement = angular.element($window.document.getElementById(attributes.relatedMedia));
+        mediaElement.attr('src', mediaElement.attr('src'));
+        scope.loadingText = 'Loading';
+        scope.reloadText = '';
+        timeout();
+      };
+      element.ready(function () {
+        timeout();
+      });
+    },
+    scope: true,
+    template: '<i class="fa fa-spin fa-spinner"></i><span class="loading-text" data-ng-if="loadingText">{{ loadingText }}<a class="button loading-text-reload" role="button" data-ng-click="reload()" data-ng-if="reloadText">{{ reloadText }}</a></span>'
   };
-});
+}]);
 
 /**
  * Adds temporary div with loading block directive after unloaded media
  */
-app.directive('mediaLoadEvents', ['$compile', function ($compile) {
+app.directive('mediaLoadEvents', ['$compile', '$window', function ($compile, $window) {
   return function (scope, element, attributes) {
     var tags = ['img', 'iframe'];
     var i = tags.length;
@@ -94,12 +116,19 @@ app.directive('mediaLoadEvents', ['$compile', function ($compile) {
       while (i--) {
         var media = element.find(tags[i]);
         var count = media.length;
-        while (count--) if (!media[count].complete) { // do not do anything to cached images; TODO: find similar measure for iframes
-          var loadingBlock = $compile('<div class="loading-block loading-media" data-loading-block></div>')(scope);
+        while (count--) if (!media[count].complete) { // do not do anything for images that are already loaded; TODO: find similar measure for iframes
           var mediaElement = angular.element(media[count]);
+          var loadingBlock = angular.element($window.document.createElement('div'));
+          mediaElement.attr('id', mediaElement.attr('id') || 'media-' + tags[i] + '-' + String(new Date().getTime()));
+          loadingBlock.attr({
+            class: 'loading-block loading-media',
+            'data-loading-block': '',
+            'data-related-media': mediaElement.attr('id'),
+            'data-reload-notification-time': 5000
+          });
           loadingBlock.css('width', media[count].style.width || mediaElement.attr('width') + 'px' || '100%');
           mediaElement.addClass('hidden-loading');
-          mediaElement.after(loadingBlock);
+          mediaElement.after($compile(loadingBlock)(scope));
           mediaElement.one('load', function () {
             var loadedMedia = angular.element(this);
             var loadingBlock = loadedMedia.next();

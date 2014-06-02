@@ -92,7 +92,7 @@ p {
   margin: {
     top: 0;
   }
-  @include font-details(0.875em, $beige-text, 400);
+  @include font-details(0.875em, $beige-text, 300);
 }
 
 a {

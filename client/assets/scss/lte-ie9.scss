@@ -1,3 +1,55 @@
+  ////////////////////////
+ // LTE IE9 STYLESHEET //
+////////////////////////
+
+/* QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ /
+/   																						                                             /
+/    _________.__                                  .__      _______________  ____   _____    /
+/   /   _____/|__| ____   ________________  ______ |  |__   \_____  \   _  \/_   | /  |  |   /
+/   \_____  \ |  |/ ___\ / ___\_  __ \__  \ \____ \|  |  \   /  ____/  /_\  \|   |/   |  |_  /
+/   /        \|  / /_/  > /_/  >  | \// __ \|  |_> >   Y  \ /       \  \_/   \   /    ^   /  /
+/  /_______  /|__\___  /\___  /|__|  (____  /   __/|___|  / \_______ \_____  /___\____   |   /
+/          \/   /_____//_____/            \/|__|        \/          \/     \/         |__|   /
+/ 																							                                             /
+/ QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ */
+/*
+  Sass/Compass Generated Stylesheet for SIGGRAPH 2014 ePromotion -- https://github.com/qltd/s2014-epromo
+
+*/
+/*------------------------------------*\
+    TABLE OF CONTENTS
+\*------------------------------------*/
+
+/*---------------------------------------------------------------------*\
+
+  1. LIBRARIES..................Stylesheet Related Resources
+    a. 3rd Party Libraries......Non-Native Stylesheets and Mixins
+    b. SIGGRAPH Libraries.......SIGGRAPH Specific Variables and Mixins
+  2. UNIVERSAL STYLES...........Styles Applied to All Elements
+  3. ELEMENTAL STYLES...........Styles for HTML Elements
+  4. UTILITIES..................Reusable Utility Classes
+  5. CONTENT....................Page Content
+    a. Primary Header...........Styles for Page Header
+    b. Primary Content..........Styles for Main Content
+    c. Primary Navigation.......Styles for Global Navigation
+
+\*---------------------------------------------------------------------*/
+
+/*------------------------------------*\
+    LIBRARIES
+\*------------------------------------*/
+
+/*------------------------------------*\
+    UNIVERSAL STYLES
+\*------------------------------------*/
+
+/*------------------------------------*\
+    ELEMENTAL STYLES
+\*------------------------------------*/
+
+/*------------------------------------*\
+    UTILITIES
+\*------------------------------------*/
 
 /** IE 9 and lower loading spinner */
 .fa-spin {
@@ -9,3 +61,7 @@
     background-image: url(../img/circle-loading.gif);
   }
 }
+
+/*------------------------------------*\
+    CONTENT
+\*------------------------------------*/

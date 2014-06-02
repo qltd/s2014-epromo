@@ -1,0 +1,11 @@
+
+/** IE 9 and lower loading spinner */
+.fa-spin {
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-image: url(../img/circle-loading.gif);
+  }
+}

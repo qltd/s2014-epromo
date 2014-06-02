@@ -85,10 +85,13 @@ h3 {
 }
 
 h4 {
-  @include font-details(1em, $grey-text);
+  @include font-details(0.875em, white);
 }
 
 p {
+  margin: {
+    top: 0;
+  }
   @include font-details(0.875em, $beige-text, 400);
 }
 
@@ -193,6 +196,9 @@ img, video {
   }
 }
 
+.social-heading {
+  font-size: 1em;
+}
 .social-toggle {
   display: inline-block;
   color: $grey-text;
@@ -261,6 +267,7 @@ img, video {
   }
   .content-description {
     margin: {
+      top: 14px;
       bottom: 30px;
     }
   }

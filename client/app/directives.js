@@ -34,7 +34,7 @@ app.directive('addthisAppend', ['$compile', '$document', '$location', '$window',
       container.attr({
         class: 'content-social'
       });
-      container.html('<h4><a class="button social-toggle" role="button" data-ng-click="toggleSocial($event)"><i class="fa fa-share-square"></i>Share</a></h4>');
+      container.html('<h4 class="social-heading"><a class="button social-toggle" role="button" data-ng-click="toggleSocial($event)"><i class="fa fa-share-square"></i>Share</a></h4>');
       element.append($compile(container.append(addThis))(scope));
     });
   };

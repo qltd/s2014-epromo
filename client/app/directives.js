@@ -12,12 +12,13 @@ app.directive('addthisAppend', ['$compile', '$document', '$location', '$window',
       var addThis = angular.element($window.document.getElementById(attributes.addthisId));
       if (!addThis.hasClass('hidden-social')) {
         $document.off('click');
-        return addThis.addClass('hidden-social');
-      }
-      $document.one('click', function () {
         addThis.addClass('hidden-social');
-      });
-      addThis.removeClass('hidden-social');
+      } else {
+        $document.one('click', function () {
+          addThis.addClass('hidden-social');
+        });
+        addThis.removeClass('hidden-social');
+      }
     };
     element.ready(function () {
       var addThis = angular.element($window.document.createElement('div'));

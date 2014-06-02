@@ -8,9 +8,12 @@ var app = angular.module('ePromo.directives', []);
 app.directive('addthisAppend', ['$compile', '$document', '$location', '$window', function ($compile, $document, $location, $window) {
   return function (scope, element, attributes) {
     scope.toggleSocial = function (e) {
-      var addThis = angular.element($window.document.getElementById(attributes.addthisId));
-      if (!addThis.hasClass('hidden-social')) return;
       e.stopPropagation();
+      var addThis = angular.element($window.document.getElementById(attributes.addthisId));
+      if (!addThis.hasClass('hidden-social')) {
+        $document.off('click');
+        return addThis.addClass('hidden-social');
+      }
       $document.one('click', function () {
         addThis.addClass('hidden-social');
       });

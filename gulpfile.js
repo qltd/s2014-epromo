@@ -3,6 +3,7 @@ var gulp = require('gulp')
   , browserify = require('gulp-browserify')
   , compass = require('gulp-compass')
   , csso = require('gulp-csso')
+  , footer = require('gulp-footer')
   , plumber = require('gulp-plumber')
   , rename = require('gulp-rename')
   , uglify = require('gulp-uglify');
@@ -19,6 +20,7 @@ gulp.task('browserify', ['bower'], function () {
     .pipe(gulp.dest('./client/assets/js/'))
     .pipe(rename('app.min.js'))
     .pipe(uglify({ outSourceMap: true }))
+    .pipe(footer('\n//# sourceMappingURL=app.min.js.map'))
     .pipe(gulp.dest('./client/assets/js/'));
 });
 
@@ -30,7 +32,6 @@ gulp.task('compass', ['bower'], function () {
     .pipe(rename(function (path) { path.basename += '.min'; }))
     .pipe(csso())
     .pipe(gulp.dest('./client/assets/css/'));
-
 });
 
 gulp.task('watch', function () {

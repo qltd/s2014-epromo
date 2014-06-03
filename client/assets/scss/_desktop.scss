@@ -188,13 +188,15 @@ a {
           opacity: 0.2;
         }
       }
-      .countdown-title {
+      .countdown-number, .countdown-title {
         color: white;
       }
     }
   }
+  .countdown-number, .countdown-title {
+    @include single-transition(color, 100ms, ease-out);
+  }
   .countdown-title {
     color: $black-text;
-    @include single-transition(color, 100ms, ease-out);
   }
 }

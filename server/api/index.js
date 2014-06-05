@@ -1,21 +1,21 @@
 /** This is a placeholder for the actual API */
 
 exports.index = function (req, res) {
-  res.json([{"title":"Dragon Trainers Unite","releaseDate":"2014-05-05 00:00:00","countdownNumber":"10","fontAwesomeClass":"fa-compress","fontAwesomeColor":"teal"},{"title":"It\u0027s a Rocket!","releaseDate":"2014-05-12 00:00:00","countdownNumber":"9","fontAwesomeClass":"fa-space-shuttle","fontAwesomeColor":"orange"},{"title":"Against the Grain","releaseDate":"2014-05-12 00:00:00","countdownNumber":"8","fontAwesomeClass":"fa-leaf","fontAwesomeColor":"beige"}]);
+  res.json([{"title":"Dragons Grow Up","releaseDate":"2014-06-03 00:00:00","countdownNumber":"10","fontAwesomeClass":"fa-compress","fontAwesomeColor":"teal"}]);
 };
 
 exports.show = function (req, res) {
   var showObj = [
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {"title":"Against the Grain","description":"\u003Cp\u003EBrunch bespoke twee forage biodiesel, normcore locavore art party pickled XOXO gastropub. Kickstarter viral Bushwick organic mustache, ethical vegan mumblecore pour-over shabby chic single-origin coffee polaroid High Life. Art party deep v forage before they sold out quinoa drinking vinegar, ethnic cred trust fund kitsch tofu pickled High Life leggings. Williamsburg Pitchfork distillery, pop-up trust fund twee 90\u0026#39;s biodiesel hoodie pour-over tattooed. Blue Bottle readymade vegan skateboard. Hella brunch retro artisan, tote bag Godard wolf gentrify. Kogi letterpress mixtape, hella High Life asymmetrical fixie Williamsburg pop-up.\u003C\/p\u003E","content":"\u003Cp\u003E\u003Cimg alt=\u0022\u0022 src=\u0022http:\/\/s2014.qltdclient.com\/sites\/default\/files\/macro-photo-of-yellow-grain.jpg\u0022 style=\u0022width: 1200px; height: 800px;\u0022 \/\u003E\u003C\/p\u003E\u003Cp\u003E\u003Cimg alt=\u0022Dragon Trainers Unite\u0022 src=\u0022http:\/\/s2014.qltdclient.com\/sites\/default\/files\/dragon-story-test.png\u0022 style=\u0022width: 800px; height: 455px;\u0022 \/\u003E\u003C\/p\u003E\u003Cp\u003EImage \u0026copy; 2014 DreamWorks Animation SKG\u003C\/p\u003E","releaseDate":"2014-05-12 00:00:00","countdownNumber":"8","fontAwesomeClass":"fa-leaf","fontAwesomeColor":"beige"},
-  {"title":"Technical Papers Preview","description":"\u003Cp\u003EBrunch bespoke twee forage biodiesel, normcore locavore art party pickled XOXO gastropub. Kickstarter viral Bushwick organic mustache, ethical vegan mumblecore pour-over shabby chic single-origin coffee polaroid High Life. Art party deep v forage before they sold out quinoa drinking vinegar, ethnic cred trust fund kitsch tofu pickled High Life leggings. Williamsburg Pitchfork distillery, pop-up trust fund twee 90\u0026#39;s biodiesel hoodie pour-over tattooed. Blue Bottle readymade vegan skateboard. Hella brunch retro artisan, tote bag Godard wolf gentrify. Kogi letterpress mixtape, hella High Life asymmetrical fixie Williamsburg pop-up.\u003C\/p\u003E","content":"\u003Cp\u003E\u003Ciframe allowfullscreen=\u0022\u0022 frameborder=\u00220\u0022 height=\u0022510\u0022 src=\u0022\/\/www.youtube.com\/embed\/u3Z1hDwGEmM\u0022 width=\u0022854\u0022\u003E\u003C\/iframe\u003E\u003C\/p\u003E","releaseDate":"2014-05-12 00:00:00","countdownNumber":"9","fontAwesomeClass":"fa-space-shuttle","fontAwesomeColor":"orange"},
-  {"title":"Dragon Trainers Unite","description":"\u003Cp\u003ELorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\u003C\/p\u003E\u003Cp\u003ELorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\u003C\/p\u003E\u003Cp\u003E\u003Ca href=\u0022http:\/\/google.com\u0022 target=\u0022_blank\u0022\u003EPossible external link\u003C\/a\u003E\u003C\/p\u003E","content":"\u003Cp\u003E\u003Cimg alt=\u0022Dragon Trainers Unite\u0022 src=\u0022http:\/\/s2014.qltdclient.com\/sites\/default\/files\/dragon-story-test.png\u0022 style=\u0022width: 800px; height: 455px;\u0022 \/\u003E\u003C\/p\u003E\u003Cp\u003EImage \u0026copy; 2014 DreamWorks Animation SKG\u003C\/p\u003E","releaseDate":"2014-05-05 00:00:00","countdownNumber":"10","fontAwesomeClass":"fa-compress","fontAwesomeColor":"teal"}
-  ];
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {"title":"Dragons Grow Up","description":"\u003Cp\u003EAt SIGGRAPH 2014, DreamWorks Animation presents a behind-the-scenes discussion of the feature animated film \u0026quot;How To Train Your Dragon 2\u0026quot; (June 2014). Writer\/director Dean DeBlois charts the nuanced filmmaking necessary to fully realize this next adventure in the secret and emotional world of dragons. Featuring DeBlois, Gil Zimmerman (Head of Layout), Simon Otto (Head of Character Animation) and Dave Walvoord (VFX Supervisor), the panel discusses the creative contributions that went into advancing the complexity and believability of the storytelling and cinematography, as well as the leap forward the animators were able to make using Apollo, DreamWorks Animation\u0026rsquo;s ground-breaking next-generation animation system.\u003C\/p\u003E\u003Cp\u003EThen, catch a special viewing of \u0026quot;How to Train Your Dragon 2\u0026quot; at SIGGRAPH 2014, Wednesday night, 13 August, 8-10 pm.\u003C\/p\u003E","content":"\u003Cp\u003E\u003Cimg alt=\u0022How to Train Your Dragon 2\u0022 src=\u0022http:\/\/s2014.siggraph.org\/sites\/default\/files\/10_dragon.jpg\u0022 style=\u0022width: 800px; height: 1185px;\u0022 \/\u003E\u003C\/p\u003E","releaseDate":"2014-06-03 00:00:00","countdownNumber":"10","fontAwesomeClass":"fa-compress","fontAwesomeColor":"teal"}
+    ];
   res.json(showObj[req.params.countdown - 1]);
 };

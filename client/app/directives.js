@@ -81,7 +81,7 @@ app.directive('addthisToolbox', ['addthis', function (addthis) {
 /**
  * Google Analytics init
  */
-app.directive('gaInit', ['$document', '$location', '$window', function ($document, $location, $window) {
+app.directive('googleAnalyticsInit', ['$document', '$location', '$window', function ($document, $location, $window) {
   return function (scope, element, attributes) {
     $document.ready(function () {
       var id = 'UA-XXXX-Y'; // dont't track development sites

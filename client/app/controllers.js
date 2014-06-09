@@ -19,7 +19,7 @@ app.controller('countdown.index', ['$scope', 'Countdown', function ($scope, Coun
  * ROUTE /#!/:number
  * TEMPLATE /app/views/countdown/show.html
  */
-app.controller('countdown.show', ['$scope', '$routeParams', '$location', '_', 'Head', 'API', 'Countdown', 'ScrollY', function ($scope, $routeParams, $location, _, Head, API, Countdown, ScrollY) {
+app.controller('countdown.show', ['$scope', '$routeParams', '$location', '_', 'GoogleAnalytics', 'Head', 'API', 'Countdown', 'ScrollY', function ($scope, $routeParams, $location, _, GoogleAnalytics, Head, API, Countdown, ScrollY) {
   ScrollY('header');
   API('countdown/' + $routeParams.item).success(function (item) {
     if (_.isEmpty(item)) return $location.path('/');
@@ -27,6 +27,7 @@ app.controller('countdown.show', ['$scope', '$routeParams', '$location', '_', 'H
     $scope.Countdown = Countdown;
     Head.setTitle(item.title);
     Head.setDescription(item.description);
+    GoogleAnalytics();
   }).error(function (err) {
     $location.path('/');
   });

@@ -43,6 +43,15 @@ app.factory('addthis', ['$window', function ($window) {
   return $window.addthis;
 }]);
 
+/**
+ * Google Analytics Service
+ */
+app.factory('GoogleAnalytics', ['$location', '$window', function ($location, $window) {
+  return function () {
+    $window._gaq.push(['_trackPageview', '/countdown' + $location.path()]);
+  };
+}]);
+
 /*------------------------------------*\
     GENERAL SERVICES
 \*------------------------------------*/
@@ -109,11 +118,12 @@ app.factory('Countdown', ['$q', 'API', function ($q, API) {
 /**
  * Factory for routes that do not point to a controller or template
  */
-app.factory('NoView', ['Head', 'ScrollY', function (Head, ScrollY) {
+app.factory('NoView', ['Head', 'GoogleAnalytics', 'ScrollY', function (Head, GoogleAnalytics, ScrollY) {
   return function () {
     ScrollY(0);
     Head.setTitle('Countdown to Technology, Innovation, and Inspiration');
     Head.setDescription('Countdown to Technology, Innovation, and Inspiration');
+    GoogleAnalytics();
   };
 }]);
 

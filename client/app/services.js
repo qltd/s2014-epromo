@@ -47,8 +47,14 @@ app.factory('addthis', ['$window', function ($window) {
  * Google Analytics Service
  */
 app.factory('GoogleAnalytics', ['$location', '$window', function ($location, $window) {
-  return function () {
-    $window._gaq.push(['_trackPageview', '/countdown' + $location.path()]);
+  var id = 'UA-XXXX-Y'; // dont't track development sites
+  if ($location.host() === 's2014.siggraph.org') id = 'UA-644366-12';
+  $window._gaq = $window._gaq || [];
+  $window._gaq.push(['_setAccount', id]);
+  return {
+    trackPageview: function () {
+      $window._gaq.push(['_trackPageview', '/countdown' + $location.path()]);
+    }
   };
 }]);
 
@@ -123,7 +129,7 @@ app.factory('NoView', ['Head', 'GoogleAnalytics', 'ScrollY', function (Head, Goo
     ScrollY(0);
     Head.setTitle('Countdown to Technology, Innovation, and Inspiration');
     Head.setDescription('Countdown to Technology, Innovation, and Inspiration');
-    GoogleAnalytics();
+    GoogleAnalytics.trackPageview();
   };
 }]);
 

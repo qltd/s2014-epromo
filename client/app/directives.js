@@ -79,20 +79,6 @@ app.directive('addthisToolbox', ['addthis', function (addthis) {
 }]);
 
 /**
- * Google Analytics init
- */
-app.directive('googleAnalyticsInit', ['$document', '$location', '$window', function ($document, $location, $window) {
-  return function (scope, element, attributes) {
-    $document.ready(function () {
-      var id = 'UA-XXXX-Y'; // dont't track development sites
-      if ($location.host() === 's2014.siggraph.org') id = 'UA-644366-12';
-      $window._gaq = $window._gaq || [];
-      $window._gaq.push(['_setAccount', id]);
-    });
-  };
-}]);
-
-/**
  * Markup to display whie content is loading
  */
 app.directive('loadingBlock', ['$window', function ($window) {

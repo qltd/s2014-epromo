@@ -27,7 +27,7 @@ app.controller('countdown.show', ['$scope', '$routeParams', '$location', '_', 'G
     $scope.Countdown = Countdown;
     Head.setTitle(item.title);
     Head.setDescription(item.description);
-    GoogleAnalytics();
+    GoogleAnalytics.trackPageview();
   }).error(function (err) {
     $location.path('/');
   });

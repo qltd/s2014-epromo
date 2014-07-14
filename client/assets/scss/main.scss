@@ -128,8 +128,13 @@ img, video {
   cursor: pointer;
 }
 
-.content-list-item {
-  @include font-details(0.875em, $beige-text, 300);
+.content-list {
+  padding: {
+    left: 20px;
+  }
+  .content-list-item {
+    @include font-details(0.875em, $beige-text, 300);
+  }
 }
 
 .fa {

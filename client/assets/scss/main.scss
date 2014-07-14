@@ -128,6 +128,10 @@ img, video {
   cursor: pointer;
 }
 
+.content-list-item {
+  @include font-details(0.875em, $beige-text, 300);
+}
+
 .fa {
   display: block;
   font-size: 3.125em;
